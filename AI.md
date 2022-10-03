@@ -3,6 +3,7 @@
 > 实验性的函数、模块或特性，
 > 在未来的更新中可能会更改或移除。应该谨慎使用这些函数或模块，或者仅用作临时或试验用途。
 # Paddle OCR
+基于百度飞桨的OCR工具库
 ## paddle.ocr(img, path)
 - `img` {Image} 图片
 - `path` {String} 自定义模型路径,必须是绝对路径
@@ -19,8 +20,8 @@ let result = paddle.ocr(img, myModelPath)
 - ` img ` {Image} 图片
 - ` cpuThreadNum ` {Number} 识别使用的 CPU 核心数量
 - ` useSlim ` {Boolean} 加载的模型,可选值:
-  - `true` ocr_v2_for_cpu(slim) :精准模型,默认
-  - `false` ocr_v2_for_cpu : 快速模型
+  - `true` ocr_v2_for_cpu(slim) :快速模型,默认
+  - `false` ocr_v2_for_cpu : 精准模型
 - `return` {Object} Json  
 
 高精度识别，返回值包含坐标，置信度
