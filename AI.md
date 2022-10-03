@@ -88,7 +88,7 @@ log(result.text)
 ```
 
 ## gmlkitResult
-[gmlkit](#gmlkitocrimglanguage)值
+[gmlkit](#gmlkitocrimglanguage)返回值
 
 ### gmlkitResult.find(predicate)
 
