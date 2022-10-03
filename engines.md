@@ -33,7 +33,7 @@ engines.execScript("hello world", "toast('hello world')");
 如果要循环运行，则：
 
 ```js
-//每隔3秒运行一次脚本，循环10次
+//每隔 3 秒运行一次脚本，循环 10 次
 engines.execScript("hello world", "toast('hello world')", {
     loopTimes: 10,
     interval: 3000
@@ -149,7 +149,12 @@ log(engines.all());
 ## ScriptEngine.isDestroyed()
 - 返回 {Boolean}
 
-脚本引擎被销毁时返回真，否则返回假。
+检测该脚本是否执行结束
+```
+let e = engines.execScriptFile("xx.js");
+sleep(2000);
+log(e.getEngine().isDestroyed())
+```
 
 ## ScriptEngine.forceStop()
 
@@ -181,7 +186,7 @@ log(engines.myEngine().getSource());
 例如脚本 receiver.js 的内容如下：
 
 ```js
-//监听say事件
+//监听 say 事件
 events.on("say", function(words){
     toastLog(words);
 });
