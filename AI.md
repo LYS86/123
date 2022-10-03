@@ -15,7 +15,6 @@
 let myModelPath = files.path("./models");
 let result = paddle.ocr(img, myModelPath)
 ```
-
 ## paddle.ocr(img[, cpuThreadNum=4, useSlim=true]);
 - ` img ` {Image} 图片
 - ` cpuThreadNum ` {Number} 识别使用的 CPU 核心数量
@@ -65,10 +64,12 @@ toastLog("识别信息: " + JSON.stringify(res))
  释放 native 内存，非必要，供万一出现内存泄露时使用
 
 # Tessract OCR
+***6.2.9新增***
+
 前往 github 下载完整例子：[TessractOCR](https://github.com/wilinz/autoxjs-tessocr)
 
-# ML Kit OCR
-Google ML Kit
+# Google ML kIT OCR 
+***6.3.4新增***
 
 ## gmlkit.ocr(img,Language)
 - `img` {Image} 图片
@@ -79,25 +80,27 @@ Google ML Kit
    - `ja` 日语
    - `ko` 韩语
    - [更多语言](https://developers.google.cn/ml-kit/vision/text-recognition/v2/languages)
-- `retrun` {Object} [gmlkitResult](#gmlkitResult)
+- `retrun` {Object} Json
 ```JS
 //识别中文
 let result = gmlkit.ocr(img, "zh");
+log(result.text)
 ```
-## gmlkitResult
-**gmlkit.ocr** 返回值
-  
-## gmlkitResult.find(predicate)
 
-## gmlkitResult.find(level,predicate)
-* `level` {Number} 层级
-* `predicate`{Function}
+## gmlkitResult
+[gmlkit](#gmlkitocrimglanguage)值
+
+### gmlkitResult.find(predicate)
+
+### gmlkitResult.find(level,predicate)
+- `level` {Number} 层级
+- `predicate`{Function}
 ```js
 //查找某个字符
 result.find(3, e => e.text == "管理")
 ```
 
-## gmlkitResult.filter(level)
+### gmlkitResult.filter(level)
 
 ### gmlkitResult.filter(level,predicate)
 过滤
