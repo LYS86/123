@@ -1,10 +1,10 @@
-# Files
-
+# 文件模块
 > 稳定性: 稳定
 
 files模块提供了一些常见的文件处理，包括文件读写、移动、复制、删掉等。
 
 一次性的文件读写可以直接使用`files.read()`, `files.write()`, `files.append()`等方便的函数，但如果需要频繁读写或随机读写，则使用`open()`函数打开一个文件对象来操作文件，并在操作完毕后调用`close()`函数关闭文件。
+# Files
 
 ## files.isFile(path)
 * `path` {string} 路径

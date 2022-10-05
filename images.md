@@ -9,6 +9,7 @@
 另一种是使用一个16进制的"32位整数" 0xAARRGGBB 来表示一个颜色，例如 `0xFF112233`表示颜色"#112233", `0x11223344`表示颜色"#11223344"。
 
 可以通过`colors.toString()`把颜色整数转换为字符串，通过`colors.parseColor()`把颜色字符串解析为颜色整数。
+# colors
 
 ## colors.toString(color)
 * `color` {number} 整数RGB颜色值
@@ -87,8 +88,6 @@
 log(colors.equals("#112233", "#112234"));
 log(colors.equals(0xFF112233, 0xFF223344));
 ```
-# colors
-
 ## colors.BLACK
 
 黑色，颜色值 #FF000000
@@ -872,8 +871,6 @@ log(result.sortBy("top-right"));
 该值的格式为0xAARRGGBB，是一个"32位整数"(虽然JavaScript中并不区分整数类型和其他数值类型)。
 
 坐标系以图片左上角为原点。以图片左侧边为y轴，上侧边为x轴。
-
-##
 
 # Point
 
