@@ -1,4 +1,5 @@
->稳定性: 实验
+# OCR文档
+>稳定性: 
 >
 > 实验性的函数、模块或特性，
 > 在未来的更新中可能会更改或移除。应该谨慎使用这些函数或模块，或者仅用作临时或试验用途。
@@ -16,13 +17,13 @@
 let myModelPath = files.path("./models");
 let result = paddle.ocr(img, myModelPath)
 ```
-## paddle.ocr(img[, cpuThreadNum=4, useSlim=true]);
+## paddle.ocr(img[, cpuThreadNum=4, useSlim=true])
 - ` img ` {Image} 图片
 - ` cpuThreadNum ` {Number} 识别使用的 CPU 核心数量
 - ` useSlim ` {Boolean} 加载的模型,可选值:
   - `true` ocr_v2_for_cpu(slim) :快速模型,默认
   - `false` ocr_v2_for_cpu : 精准模型
-- `return` {Array}
+- `return` {Array}  
 
 高精度识别，返回值包含坐标，置信度
 ```js
@@ -45,13 +46,13 @@ toastLog(JSON.stringify(res))
 	"words": "约定"
 }]
 ```
-## paddle.ocrText(img[, cpuThreadNum=4, useSlim=true]);
+## paddle.ocrText(img[, cpuThreadNum=4, useSlim=true])
 - ` img ` {Image} 图片
 - ` cpuThreadNum ` {Number} 识别使用的 CPU 核心数量
 - ` useSlim ` {Boolean} 加载的模型,可选值:
   - `true` ocr_v2_for_cpu(slim) :快速模型,默认
   - `false` ocr_v2_for_cpu : 精准模型
-- return {Array} 字符串数组
+- `return` {Array} 字符串数组
 
 只返回文本识别信息
 ```js
