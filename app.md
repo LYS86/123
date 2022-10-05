@@ -5,7 +5,7 @@ app模块提供一系列函数，用于使用其他应用、与其他应用交�
 同时提供了方便的进阶函数startActivity和sendBroadcast，用他们可完成app模块没有内置的和其他应用的交互。
 
 ## app.versionCode
-* {number}
+* `return` {number}
 
 当前软件版本号，整数值。例如160, 256等。
 
@@ -16,7 +16,7 @@ toastLog(app.versionCode);
 ```
 
 ## app.versionName
-* {string}
+* `return` {string}
 
 当前软件的版本名称，例如"3.0.0 Beta"。
 
@@ -27,12 +27,12 @@ toastLog(app.verionName);
 ```
 
 ## app.autojs.versionCode
-* {number}
+* `return` {number}
 
 Auto.js版本号，整数值。例如160, 256等。
 
 ## app.autojs.versionName
-* {string}
+* `return` {string}
 
 Auto.js版本名称，例如"3.0.0 Beta"。
 
@@ -67,7 +67,7 @@ launch("com.tencent.mm");
 ## app.getPackageName(appName)
 * `appName` {string} 应用名称
 
-获取应用名称对应的已安装的应用的包名。如果该找不到该应用，返回null；如果该名称对应多个应用，则只返回其中某一个的包名。
+获取应用名称对应的已安装的应用的包名，如果该找不到该应用，返回 `null` 。如果该名称对应多个应用，则只返回其中某一个的包名。
 
 该函数也可以作为全局函数使用。
 
@@ -88,6 +88,7 @@ var name = getAppName("com.tencent.mobileqq"); //返回"QQ"
 
 ## app.openAppSetting(packageName)
 * `packageName` {string} 应用包名
+* `return` {Boolean}
 
 打开应用的详情页(设置页)。如果找不到该应用，返回false; 否则返回true。
 
@@ -114,7 +115,7 @@ app.viewFile("/sdcard/1.txt");
 
 ```js
 //编辑文本文件
-app.editFile("/sdcard/1.txt/);
+app.editFile('/sdcard/1.txt/');
 ```
 
 ## app.uninstall(packageName)
@@ -134,15 +135,15 @@ app.uninstall("com.tencent.mobileqq");
 如果没有安装浏览器应用，则抛出`ActivityNotException`。
 
 ## app.sendEmail(options)
-*  `options` {Object} 发送邮件的参数。包括:
-  * `email` {string} | {Array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
-  * `cc` {string} | {Array} 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示
-  * `bcc` {string} | {Array} 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示
-  * `subject` {string}  邮件主题(标题)
-  * `text` {string} 邮件正文
-  * `attachment` {string} 附件的路径。
+* `options` {Object} 发送邮件的参数。包括:
+     * `email` {string} | {Array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
+    * `cc` {string} | {Array} 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示
+    * `bcc` {string} | {Array} 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示
+    * `subject` {string}  邮件主题(标题)
+    * `text` {string} 邮件正文
+    * `attachment` {string} 附件的路径。
 
-根据选项options调用邮箱应用发送邮件。这些选项均是可选的。
+根据选项`options`调用邮箱应用发送邮件。这些选项均是可选的。
 
 如果没有安装邮箱应用，则抛出`ActivityNotException`。
 
@@ -194,28 +195,19 @@ app.startActivity({ 
 ```
 
 ## app.intent(options)
-* `options` {Object} 选项，包括：
-    * `action` {string} 意图的Action，指意图要完成的动作，是一个字符串常量，比如"android.intent.action.SEND"。当action以"android.intent.action"开头时，可以省略前缀，直接用"SEND"代替。参见[Actions](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions)。
+**[v4.1.0新增]**
+- `options` {Object} 选项，包括：
+    - `action` {string} 意图的Action，指意图要完成的动作，是一个字符串常量，比如"android.intent.action.SEND"。当action以"android.intent.action"开头时，可以省略前缀，直接用"SEND"代替。参见[Actions](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions)。
+    - `type` {string} 意图的MimeType，表示和该意图直接相关的数据的类型，表示比如"text/plain"为纯文本类型。
+    - `data` {string} 意图的Data，表示和该意图直接相关的数据，是一个Uri, 可以是文件路径或者Url等。例如要打开一个文件, action为"android.intent.action.VIEW", data为"file:///sdcard/1.txt"。
+    - `category` {Array} 意图的类别。比较少用。参见[Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories)。
+    - `packageName` {string} 目标包名
+    - `className` {string} 目标Activity或Service等组件的名称
+    - `extras` {Object} 以键值对构成的这个Intent的Extras(额外信息)。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见[Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data)。
+    - `flags` {Array} intent的标识，字符串数组，例如`["activity_new_task", "grant_read_uri_permission"]`。参见[Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29)。
+    - `root` {Boolea} 是否以root权限启动、发送该intent。使用该参数后，不能使用`context.
 
-    * `type` {string} 意图的MimeType，表示和该意图直接相关的数据的类型，表示比如"text/plain"为纯文本类型。
 
-    * `data` {string} 意图的Data，表示和该意图直接相关的数据，是一个Uri, 可以是文件路径或者Url等。例如要打开一个文件, action为"android.intent.action.VIEW", data为"file:///sdcard/1.txt"。
-
-    * `category` {Array} 意图的类别。比较少用。参见[Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories)。
-
-    * `packageName` {string} 目标包名
-
-    * `className` {string} 目标Activity或Service等组件的名称
-
-    * `extras` {Object} 以键值对构成的这个Intent的Extras(额外信息)。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见[Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data)。
-
-    * `flags` {Array} intent的标识，字符串数组，例如`["activity_new_task", "grant_read_uri_permission"]`。参见[Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29)。
-
-      **[v4.1.0新增]**
-
-    * `root` {Boolea} 是否以root权限启动、发送该intent。使用该参数后，不能使用`context.startActivity()`等方法，而应该直接使用诸如`app.startActivity({...})`的方法。
-
-      **[v4.1.0新增]**
 
 根据选项，构造一个意图Intent对象。
 
@@ -304,7 +296,7 @@ shell("am start " + app.intentToShell({
 **[v4.1.0新增]**
 
 * `uri` {string} 一个代表Uri的字符串，例如"file:///sdcard/1.txt", "https://www.autojs.org"
-* 返回 {Uri} 一个代表Uri的对象，参见[android.net.Uri](https://developer.android.com/reference/android/net/Uri)。
+* `return` {Uri} 一个代表Uri的对象，参见[android.net.Uri](https://developer.android.com/reference/android/net/Uri)。
 
 解析uri字符串并返回相应的Uri对象。即使Uri格式错误，该函数也会返回一个Uri对象，但之后如果访问该对象的scheme, path等值可能因解析失败而返回`null`。
 
@@ -315,6 +307,6 @@ shell("am start " + app.intentToShell({
 **[v4.1.0新增]**
 
 * `path` {string} 文件路径，例如"/sdcard/1.txt"
-* 返回 {Uri} 一个指向该文件的Uri的对象，参见[android.net.Uri](https://developer.android.com/reference/android/net/Uri)。
+* `return` {Uri} 一个指向该文件的Uri的对象，参见[android.net.Uri](https://developer.android.com/reference/android/net/Uri)。
 
 从一个文件路径创建一个uri对象。需要注意的是，在高版本Android上，由于系统限制直接在Uri暴露文件的绝对路径，因此返回的Uri会是诸如`content://...`的形式。
