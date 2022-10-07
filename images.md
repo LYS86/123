@@ -455,7 +455,7 @@ images.save(clip, "/sdcard/clip.png");
 示例:
 ```js
 //请求截图
-//第一次使用该函数会弹出截图权限请求，建议选择“总是允许”。
+//每次使用该函数都会弹出截图权限请求，建议选择“总是允许”。
 if(!requestScreenCapture()){
     toast("请求截图失败");
     exit();
