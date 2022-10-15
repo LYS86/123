@@ -8,7 +8,6 @@ ui 模块提供了编写用户界面的支持。
 
 ```js
 "ui";
-
 //脚本的其他代码
 ```
 
@@ -69,6 +68,7 @@ ui.layout(
 一个界面便由一些布局和控件组成。为了便于文档阅读，我们再说明一下以下术语：
 
 - 子视图, 子控件: 布局里面的控件是这个布局的子控件/子视图。实际上布局里面不仅仅只能有控件，还可以是嵌套的布局。因此用子视图(Child View)更准确一些。在上面的例子中，按钮便是垂直布局的子控件。
+
 - 父视图，父布局：直接包含一个控件的布局是这个控件的父布局/父视图(Parent View)。在上面的例子中，垂直布局便是按钮的父布局。
 
 # 视图: View
@@ -131,6 +131,7 @@ toast(ui.ok.getText());
 ```
 
 这个例子中有一个按钮控件"确定"，id 属性为"ok"，那么我们可以在代码中使用`ui.ok`来获取他，再通过`getText()`函数获取到这个按钮控件的文本内容。
+
 另外这个例子中使用帧布局(frame)是因为，我们只有一个控件，因此用于最简单的布局帧布局。
 
 ## gravity
@@ -138,11 +139,17 @@ toast(ui.ok.getText());
 View 的"重力"。用于决定 View 的内容相对于 View 的位置，可以设置的值为:
 
 - `left` 靠左
+
 - `right` 靠右
+
 - `top` 靠顶部
+
 - `bottom` 靠底部
+
 - `center` 居中
+
 - `center_vertical` 垂直居中
+
 - `center_horizontal` 水平居中
 
 例如对于一个按钮控件，`gravity="right"`会使其中的文本内容靠右显示。例如：
@@ -187,14 +194,19 @@ ui.layout(
 margin 为 View 和其他 View 的间距，即外边距。margin 属性包括四个值:
 
 - `marginLeft` 左外边距
+
 - `marginRight` 右外边距
+
 - `marginTop` 上外边距
+
 - `marginBottom` 下外边距
 
 而 margin 属性本身的值可以有三种格式:
 
 - `margin="marginAll"` 指定各个外边距都是该值。例如`margin="10"`表示左右上下边距都是 10dp。
+
 - `margin="marginLeft marginTop marginRight marginBottom"` 分别指定各个外边距。例如`margin="10 20 30 40"`表示左边距为 10dp, 上边距为 20dp, 右边距为 30dp, 下边距为 40dp
+
 - `margin="marginHorizontal marginVertical"` 指定水平外边距和垂直外边距。例如`margin="10 20"`表示左右边距为 10dp, 上下边距为 20dp。
 
 用一个例子来具体理解外边距的含义：
@@ -256,7 +268,9 @@ View 和他的自身内容的间距，也就是内边距。注意和 margin 属�
 paddding 属性的值同样有三种格式：
 
 - `padding="paddingAll"` 指定各个内边距都是该值。例如`padding="10"`表示左右上下内边距都是 10dp。
+
 - `padding="paddingLeft paddingTop paddingRight paddingBottom"` 分别指定各个内边距。例如`padding="10 20 30 40"`表示左内边距为 10dp, 上内边距为 20dp, 右内边距为 30dp, 下内边距为 40dp
+
 - `padding="paddingHorizontal paddingVertical"` 指定水平内边距和垂直内边距。例如`padding="10 20"`表示左右内边距为 10dp, 上下内边距为 20dp。
 
 用一个例子来具体理解内边距的含义：
@@ -325,7 +339,9 @@ View 的最小宽度。该值不总是生效的，取决于其父布局是否有
 View 的可见性，该属性可以决定 View 是否显示出来。其值可以为：
 
 - `gone` 不可见。
+
 - `visible` 可见。默认情况下 View 都是可见的。
+
 - `invisible` 不可见，但仍然占用位置。
 
 ## rotation
@@ -383,7 +399,9 @@ View 的变换中心坐标 y。用于 View 的旋转、放缩等变换的中心�
 设置字体的样式，比如斜体、粗体等。可选的值为：
 
 - bold 加粗字体
+
 - italic 斜体
+
 - normal 正常字体
 
 可以用或("|")把他们组合起来，比如粗斜体为"bold|italic"。
@@ -416,8 +434,11 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 设置字体。可选的值为：
 
 - `normal` 正常字体
+
 - `sans` 衬线字体
+
 - `serif` 非衬线字体
+
 - `monospace` 等宽字体
 
 示例，等宽字体: `<text text="等宽字体" typeface="monospace"/>`
@@ -427,9 +448,13 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 设置文本的省略号位置。文本的省略号会在文本内容超出文本控件时显示。可选的值为：
 
 - `end` 在文本末尾显示省略号
+
 - `marquee` 跑马灯效果，文本将滚动显示
+
 - `middle` 在文本中间显示省略号
+
 - `none` 不显示省略号
+
 - `start` 在文本开头显示省略号
 
 ## ems
@@ -447,10 +472,15 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 可选的值为以下的值以其通过或("|")的组合：
 
 - `all` 匹配所有连接、邮件、地址、电话
+
 - `email` 匹配电子邮件地址
+
 - `map` 匹配地图地址
+
 - `none` 不匹配 (默认)
+
 - `phone` 匹配电话号码
+
 - `web` 匹配 URL 地址
 
 示例：`<text autoLink="web|phone" text="百度: http://www.baidu.com 电信电话: 10000"/>`
@@ -461,9 +491,11 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 
 除此之外，按钮控件有一些内置的样式，通过`style`属性设置，包括：
 
-- Widget.AppCompat.Button.Colored 带颜色的按钮
-- Widget.AppCompat.Button.Borderless 无边框按钮
-- Widget.AppCompat.Button.Borderless.Colored 带颜色的无边框按钮
+- `Widget.AppCompat.Button.Colored` 带颜色的按钮
+
+- `Widget.AppCompat.Button.Borderless` 无边框按钮
+
+- `Widget.AppCompat.Button.Borderless.Colored` 带颜色的无边框按钮
 
 这些样式的具体效果参见"示例/界面控件/按钮控件.js"。
 
@@ -531,35 +563,65 @@ ui.layout(
 指定输入框可以输入的文本类型。可选的值为以下值及其用"|"的组合:
 
 - `date` 用于输入日期。
+
 - `datetime` 用于输入日期和时间。
+
 - `none` 没有内容类型。此输入框不可编辑。
+
 - `number` 仅可输入数字。
+
 - `numberDecimal` 可以与 number 和它的其他选项组合，以允许输入十进制数(包括小数)。
+
 - `numberPassword` 仅可输入数字密码。
+
 - `numberSigned` 可以与 number 和它的其他选项组合，以允许输入有符号的数。
+
 - `phone` 用于输入一个电话号码。
+
 - `text` 只是普通文本。
+
 - `textAutoComplete` 可以与 text 和它的其他选项结合, 以指定此字段将做自己的自动完成, 并适当地与输入法交互。
+
 - `textAutoCorrect` 可以与 text 和它的其他选项结合, 以请求自动文本输入纠错。
+
 - `textCapCharacters` 可以与 text 和它的其他选项结合, 以请求大写所有字符。
+
 - `textCapSentences` 可以与 text 和它的其他选项结合, 以请求大写每个句子里面的第一个字符。
+
 - `textCapWords` 可以与 text 和它的其他选项结合, 以请求大写每个单词里面的第一个字符。
+
 - `textEmailAddress` 用于输入一个电子邮件地址。
+
 - `textEmailSubject` 用于输入电子邮件的主题。
+
 - `textImeMultiLine` 可以与 text 和它的其他选项结合，以指示虽然常规文本视图不应为多行, 但如果可以, 则 IME 应提供多行支持。
+
 - `textLongMessage` 用于输入长消息的内容。
+
 - `textMultiLine` 可以与 text 和它的其他选项结合, 以便在该字段中允许多行文本。如果未设置此标志, 则文本字段将被限制为单行。
+
 - `textNoSuggestions` 可以与 text 及它的其他选项结合, 以指示输入法不应显示任何基于字典的单词建议。
+
 - `textPassword` 用于输入密码。
+
 - `textPersonName` 用于输入人名。
+
 - `textPhonetic` 用于输入拼音发音的文本, 如联系人条目中的拼音名称字段。
+
 - `textPostalAddress` 用于输入邮寄地址。
+
 - `textShortMessage` 用于输入短的消息内容。
+
 - `textUri` 用于输入一个 URI。
+
 - `textVisiblePassword` 用于输入可见的密码。
+
 - `textWebEditText` 用于输入在 web 表单中的文本。
+
 - `textWebEmailAddress` 用于在 web 表单里输入一个电子邮件地址。
+
 - `textWebPassword` 用于在 web 表单里输入一个密码。
+
 - `time` 用于输入时间。
 
 例如，想指定一个输入框的输入类型为小数数字，为: `<input inputType="number|numberDecimal"/>`
@@ -616,6 +678,7 @@ ui.layout(
 ```
 
 再例如，显示文件/sdcard/1.png 的图片为 `<img src="file:///sdcard/1.png"/>`。
+
 再例如，使 base64 显示一张钱包小图片为：
 
 ```js
@@ -638,12 +701,19 @@ ui.layout(
 控制图片根据图片控件的宽高放缩时的模式。可选的值为：
 
 - `center` 在控件中居中显示图像, 但不执行缩放。
+
 - `centerCrop` 保持图像的长宽比缩放图片, 使图像的尺寸 (宽度和高度) 等于或大于控件的相应尺寸 (不包括内边距 padding)并且使图像在控件中居中显示。
+
 - `centerInside` 保持图像的长宽比缩放图片, 使图像的尺寸 (宽度和高度) 小于视图的相应尺寸 (不包括内边距 padding)并且图像在控件中居中显示。
+
 - `fitCenter` 保持图像的长宽比缩放图片, 使图片的宽**或**高和控件的宽高相同并使图片在控件中居中显示
+
 - `fitEnd` 保持图像的长宽比缩放图片, 使图片的宽**或**高和控件的宽高相同并使图片在控件中靠右下角显示
+
 - `fitStart` 保持图像的长宽比缩放图片, 使图片的宽**或**高和控件的宽高相同并使图片在控件靠左上角显示
+
 - `fitXY` 使图片和宽高和控件的宽高完全匹配，但图片的长宽比可能不能保持一致
+
 - `matrix` 绘制时使用图像矩阵进行缩放。需要在代码中使用`setImageMatrix(Matrix)`函数才能生效。
 
 默认的 scaleType 为`fitCenter`；除此之外最常用的是`fitXY`， 他能使图片放缩到控件一样的大小，但图片可能会变形。
@@ -675,6 +745,7 @@ ui.layout(
 ## borderWidth
 
 图片控件的边框宽度。用于在图片外面显示一个边框，边框会随着图片控件的外形(圆角等)改变而相应变化。
+
 例如, 圆角矩形带灰色边框的 Auto.js 图标：`<img w="100" h="100" radius="20" borderWidth="5" borderColor="gray" bg="white" src="http://www.autojs.org/assets/uploads/profile/3-profileavatar.png" />`
 
 ## borderColor
@@ -696,11 +767,8 @@ ui.layout(
 —————
 
 | 控件 1 |
-
 | 控件 2 |
-
 | 控件 3 |
-
 | ............ |
 
 ——————
@@ -708,6 +776,7 @@ ui.layout(
 ## layout_weight
 
 垂直布局中的控件可以通过`layout_weight`属性来控制控件高度占垂直布局高度的比例。如果为一个控件指定`layout_weight`, 则这个控件的高度=垂直布局剩余高度 \* layout_weight / weightSum；如果不指定 weightSum, 则 weightSum 为所有子控件的 layout_weight 之和。所谓"剩余高度"，指的是垂直布局中减去没有指定 layout_weight 的控件的剩余高度。
+
 例如:
 
 ```js
@@ -722,6 +791,7 @@ ui.layout(
 ```
 
 在这个布局中，三个控件的 layout_weight 都是 1，也就是他们的高度都会占垂直布局高度的 1/3，都是 33.3dp.
+
 再例如：
 
 ```js
@@ -736,6 +806,7 @@ ui.layout(
 ```
 
 在这个布局中，第一个控件高度为 1/4, 第二个控件为 2/4, 第三个控件为 1/4.
+
 再例如：
 
 ```js
@@ -750,6 +821,7 @@ ui.layout(
 ```
 
 在这个布局中，因为指定了 weightSum 为 5, 因此第一个控件高度为 1/5, 第二个控件为 2/5, 第三个控件为 1/5.
+
 再例如：
 
 ```js
@@ -783,7 +855,9 @@ ui.layout(
 # 水平布局: horizontal
 
 水平布局是一种比较简单的布局，会把在它里面的控件按照水平方向依次摆放，如下图所示：
+
 水平布局:
+
 ————————————————————————————
 
 | 控件 1 | 控件 2 | 控件 3 | ... |
@@ -841,62 +915,96 @@ ui.layout(
 # ui
 
 ## ui.layout(xml)
+
 - `xml` {XML} | {string}  布局XML或者XML字符串
 
 将布局XML渲染为视图（View）对象， 并设置为当前视图。
 
+## ui.layoutFile(xmlFile)
+
+- `xmlFile` {string} 布局XML文件的路径
+
+读取本地XML文件渲染为视图（View）对象,并设置为当前视图。
+
 ## ui.inflate(xml[, parent = null, attachToParent = false])
+
 - `xml` {string} | {XML} 布局XML或者XML字符串
+
 - `parent` {View} 父视图
+
 - `attachToParent` {boolean} 是否渲染的View加到父视图中，默认为false
-返回 {View}
+
+- `return` {View}
 
 将布局XML渲染为视图（View）对象。如果该View将作为某个View的子View，我们建议传入parent参数，这样在渲染时依赖于父视图的一些布局属性能够正确应用。
 
 此函数用于动态创建、显示View。
+
 ```js
-"ui";
-
-$ui.layout(
-    <linear id="container">
-    </linear>
-);
-
-// 动态创建3个文本控件，并加到container容器中
+// 动态创建3个控件，并加到container容器中
 // 这里仅为实例，实际上并不推荐这种做法，如果要展示列表，
 // 使用list组件；动态创建十几个、几十个View会让界面卡顿
+"ui";
+ui.layout(
+    <vertical id ="container" padding="16">
+        <button text="原有控件" w="*"/>
+    </vertical>
+);
 for (let i = 0; i < 3; i++) {
-    let textView = $ui.inflate(
-        <text textColor="#000000" textSize="14sp"/>
-    , $ui.container);
-    textView.attr("text", "文本控件" + i);
-    $ui.container.addView(textView);
+    let View = ui.inflate(
+        <button textColor="#19CAAD" text={"动态控件"+i} textSize="14sp"/>, ui.container, true);
+    //ui.container.addView(View);
 }
 ```
+## ui.registerWidget(name, widget)
+- `name` {string} 组件名称
+- `widget` {Function} 组件
+
+注册一个自定义组件。参考示例->界面控件->自定义控件。
+
 ## ui.findView(id)
+
 - `id` {string}  View的ID
-- 返回 {View}
+
+- `return` {View}
 
 在当前视图中根据ID查找相应的视图对象并返回。如果当前未设置视图或找不到此ID的视图时返回`null`。
 
 一般我们都是通过`ui.xxx`来获取id为xxx的控件，如果xxx是一个ui已经有的属性，就可以通过`ui.findView()`来获取这个控件
 
+## ui.isUiThread()
+-  `return` {boolean}
+返回当前线程是否是UI线程。
+```js
+"ui";
+log(ui.isUiThread()); // => true
+threads.start(function() {
+    log(ui.isUiThread()); // => false
+});
+```
+
 ## ui.finish()
+
 结束当前活动并销毁界面。
 
 ## ui.setContentView(view)
+
 -`view` {View}
 
 将视图对象设置为当前视图。
 
 ## ui.run(callback)
+
 -`callback` {Function} 回调函数
--返回 {any} callback的执行结果
+
+-`return` {any} callback的执行结果
 
 将`callback`在UI线程中执行。如果当前已经在UI线程中，则直接执行`callback`；否则将`callback`抛到UI线程中执行（加到UI线程的消息循环的末尾），**并等待callback执行结束(阻塞当前线程)**。
 
 ## ui.post(callback[, daley])
+
 - `callback` {Function} 回调函数
+
 - `delay `{number} 延迟，单位毫秒
 
 将`callback`加到UI线程的消息循环中，并延迟`delay`毫秒后执行（不能准确保证一定在delay毫秒后执行）。
@@ -905,37 +1013,35 @@ for (let i = 0; i < 3; i++) {
 
 ```js
 "ui";
-
 ui.layout(
     <frame>
         <text id="result"/>
     </frame>
 );
-
-ui.result.attr("text", "计算中");
-// 在子线程中计算1+ ... + 10000000
-threads.start({
+ui.result.setText("计算中");
+// 在子线程中计算;
+threads.start(function() {
     let sum = 0;
     for (let i = 0; i < 1000000; i++) {
         sum += i;
-    }
-    // 由于不能在子线程操作UI，所以要抛到UI线程执行
+    };
+    // 由于不能在子线程操作UI，所以要抛到UI线程执行 
     ui.post(() => {
-        ui.result.attr("text", String(sum));
+        ui.result.setText(String(sum))
     });
 });
 ```
 
 ## ui.statusBarColor(color)
+
 - `color` {string | number} 颜色
 
 设置当前界面的状态栏颜色。
+
 ```js
 "ui";
 ui.statusBarColor("#000000");
 ```
-
-## ui.showPopupMenu(view, menu)
 
 # 尺寸的单位: Dimension
 
