@@ -1,8 +1,5 @@
 # OCR文档
->稳定性: 
->
-> 实验性的函数、模块或特性，
-> 在未来的更新中可能会更改或移除。应该谨慎使用这些函数或模块，或者仅用作临时或试验用途。
+!>稳定性: 实验
 # Paddle OCR
 **5.6.1 新增**
  基于百度飞桨的 OCR
@@ -12,7 +9,7 @@
 - `return` {Array}
 
 使用自定义模型进行文字识别
-```
+```js
 // files.path() 将相对路径转为绝对路径
 let myModelPath = files.path("./models");
 let result = paddle.ocr(img, myModelPath)
@@ -60,12 +57,10 @@ let res = paddle.ocrText(img);
 toastLog("识别信息: " + JSON.stringify(res))
 //["约定","最终相遇"]
 ```
-## paddle.release()
- 释放 native 内存，非必要，供万一出现内存泄露时使用
 # Tessract OCR
-**6.2.9 新增**
+**6.2.9 新增**	
 前往 github 下载完整例子：[TessractOCR](https://github.com/wilinz/autoxjs-tessocr)
-# Google ML kIT OCR
+# Google ML kit OCR
 **6.3.4 新增**
 ## gmlkit.ocr(img,Language)
 - `img` {Image} 图片
@@ -77,7 +72,7 @@ toastLog("识别信息: " + JSON.stringify(res))
    - `ko` 韩语
    - [更多语言](https://developers.google.cn/ml-kit/vision/text-recognition/v2/languages)
 - `retrun` {Object} Json
-```JS
+```js
 //识别中文
 let result = gmlkit.ocr(img, "zh");
 log(result.text)

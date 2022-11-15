@@ -1,8 +1,7 @@
-# APP模块
+# APP
 该模块提供一系列函数，用于使用其他应用、与其他应用交互。例如发送意图、打开文件、发送邮件等。
 
 同时提供了方便的进阶函数 `startActivity` 和 `sendBroadcast` ，用他们可完成app模块没有内置的和其他应用的交互。
-# App
 
 ## app.versionCode
 * `return` {number}
@@ -136,12 +135,12 @@ app.uninstall("com.tencent.mobileqq");
 
 ## app.sendEmail(options)
 * `options` {Object} 发送邮件的参数。包括:
-     * `email` {string} | {Array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
-    * `cc` {string} | {Array} 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示
-    * `bcc` {string} | {Array} 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示
-    * `subject` {string}  邮件主题(标题)
-    * `text` {string} 邮件正文
-    * `attachment` {string} 附件的路径。
+  * `email` {string} | {Array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
+  * `cc` {string} | {Array} 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示
+  * `bcc` {string} | {Array} 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示
+  * `subject` {string}  邮件主题(标题)
+  * `text` {string} 邮件正文
+  * `attachment` {string} 附件的路径。
 
 根据选项`options`调用邮箱应用发送邮件。这些选项均是可选的。
 
@@ -206,7 +205,6 @@ app.startActivity({ 
     - `extras` {Object} 以键值对构成的这个Intent的Extras(额外信息)。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见[Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data)。
     - `flags` {Array} intent的标识，字符串数组，例如`["activity_new_task", "grant_read_uri_permission"]`。参见[Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29)。
     - `root` {Boolea} 是否以root权限启动、发送该intent。使用该参数后，不能使用`context.
-
 
 
 根据选项，构造一个意图Intent对象。
