@@ -1,6 +1,6 @@
 # 全局变量与函数
 
-全局变量和函数在所有模块中均可使用。 但以下变量的作用域只在模块内，详见 [module](modules.html)：
+全局变量和函数在所有模块中均可使用。 但以下变量的作用域只在模块内，详见 [module](modules.md)：
 * exports
 * module
 * require()
@@ -62,15 +62,14 @@ for(var i = 0; i < 100; i++){
   toast(i);
 }
 ```
-运行这段程序以后，会很快执行完成，且不断弹出消息，在任务管理中关闭所有脚本也无法停止。
-要保证气泡消息才继续执行可以用：
+上述代码运行后，消息将不断弹出，即使脚本停止运行也无法停止。
+加延时，等待气泡显示
 ```js
 for(var i = 0; i < 100; i++){
   toast(i);
   sleep(2000);
 }
 ```
-或者修改toast函数：
 ```js
 var _toast_ = toast;
 toast = function(message){
@@ -81,9 +80,28 @@ for(var i = 0; i < 100; i++){
   toast(i);
 }
 ```
+或者修改toast函数：
+```js
+importClass(android.widget.Toast);
+
+let toast = (function () {
+  let toast = null;
+  function showText(msg) {
+    var msg = msg.toString();
+    if (!toast) {
+      toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+    } else {
+      toast.setText(msg);
+    }
+    toast.show();
+  }
+  return showText;
+})();
+module.exports = toast;
+```
 
 ## toastLog(message)
-* message {string} 要显示的信息
+* `message` {string} 要显示的信息
 
 相当于`toast(message);log(message)`。显示信息message并在控制台中输出。参见console.log。
 

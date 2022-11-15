@@ -135,7 +135,7 @@ app.uninstall("com.tencent.mobileqq");
 
 ## app.sendEmail(options)
 * `options` {Object} 发送邮件的参数。包括:
-     * `email` {string} | {Array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
+    * `email` {string} | {Array} 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
     * `cc` {string} | {Array} 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示
     * `bcc` {string} | {Array} 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示
     * `subject` {string}  邮件主题(标题)
@@ -205,7 +205,6 @@ app.startActivity({ 
     - `extras` {Object} 以键值对构成的这个Intent的Extras(额外信息)。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见[Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data)。
     - `flags` {Array} intent的标识，字符串数组，例如`["activity_new_task", "grant_read_uri_permission"]`。参见[Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29)。
     - `root` {Boolea} 是否以root权限启动、发送该intent。使用该参数后，不能使用`context.
-
 
 
 根据选项，构造一个意图Intent对象。
