@@ -594,11 +594,11 @@ var p = images.findMultiColors(img, "#123456", [
 * `y` {number} 要检测的位置纵坐标
 * `threshold` {number} 颜色相似度临界值，默认为 4。取值范围为 0~255。
 * `algorithm` {string} 颜色匹配算法，包括:
-    * "equal": 相等匹配，只有与给定颜色 color 完全相等时才匹配。
-    * "diff": 差值匹配。与给定颜色的 R、G、B 差的绝对值之和小于 threshold 时匹配。
-    * "rgb": rgb 欧拉距离相似度。与给定颜色 color 的 rgb 欧拉距离小于等于 threshold 时匹配。
-    * "rgb+": 加权 rgb 欧拉距离匹配([LAB Delta E](https://en.wikipedia.org/wiki/Color_difference))。
-    * "hs": hs 欧拉距离匹配。hs 为 HSV 空间的色调值。
+    * `equal`: 相等匹配，只有与给定颜色 color 完全相等时才匹配。
+    * `diff`: 差值匹配。与给定颜色的 R、G、B 差的绝对值之和小于 threshold 时匹配。
+    * `rgb`: rgb 欧拉距离相似度。与给定颜色 color 的 rgb 欧拉距离小于等于 threshold 时匹配。
+    * `rgb+`: 加权 rgb 欧拉距离匹配([LAB Delta E](https://en.wikipedia.org/wiki/Color_difference))。
+    * `hs`: hs 欧拉距离匹配。hs 为 HSV 空间的色调值。
 
 返回图片 image 在位置(x, y)处是否匹配到颜色 color。用于检测图片中某个位置是否是特定颜色。   
 一个判断微博客户端的某个微博是否被点赞过的例子：    
