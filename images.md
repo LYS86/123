@@ -802,7 +802,7 @@ log(result.sortBy("top-right"));
 返回以像素为单位的图片高度。
 
 ## Image.saveTo(path)
-* `path` {string} 路径
+* `path` {string} 绝对路径
 
 把图片保存到路径 path。（如果文件存在则覆盖）
 
