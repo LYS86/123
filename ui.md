@@ -841,7 +841,7 @@ ui.layout(
 # ui
 
 ## ui.layout(xml)
-- `xml` {XML} | {string}  布局XML或者XML字符串
+- `xml` {XML} | {string} 布局XML或者XML字符串
 
 将布局XML渲染为视图（View）对象， 并设置为当前视图。
 
@@ -879,7 +879,7 @@ for (let i = 0; i < 3; i++) {
 ```
 
 ## ui.findView(id)
-- `id` {string}  View的ID
+- `id` {string} View的ID
 - 返回 {View}
 
 在当前视图中根据ID查找相应的视图对象并返回。如果当前未设置视图或找不到此ID的视图时返回`null`。
@@ -888,6 +888,7 @@ for (let i = 0; i < 3; i++) {
 
 ## ui.isUiThread()
 - `return` {boolean}
+
 返回当前线程是否是UI线程。
 ```js
 "ui";
@@ -896,7 +897,7 @@ threads.start(function() {
     log(ui.isUiThread()); // => false
 });
 
-``` 
+```
 ## ui.registerWidget(name, widget)
 - `name` {string} 组件名称
 - `widget` {Function} 组件
@@ -919,7 +920,7 @@ threads.start(function() {
 
 ## ui.post(callback[, daley])
 - `callback` {Function} 回调函数
-- `delay `{number} 延迟，单位毫秒
+- `delay` {number} 延迟，单位毫秒
 
 将`callback`加到UI线程的消息循环中，并延迟`delay`毫秒后执行（不能准确保证一定在delay毫秒后执行）。
 
