@@ -896,7 +896,7 @@ threads.start(function() {
     log(ui.isUiThread()); // => false
 });
 
-```
+``` 
 ## ui.registerWidget(name, widget)
 - `name` {string} 组件名称
 - `widget` {Function} 组件
