@@ -2,7 +2,7 @@
 
 提供基本的 Base64 转换函数。
 
-# $base64.encode(str[, encoding = 'utf-8')
+## $base64.encode(str[, encoding = 'utf-8')
 
 * `str` {string} 要编码的字符串
 * `encoding` {string} 可选，字符编码
@@ -12,7 +12,7 @@
 log($base64.encode("autox.js"));
 // 日志输出 YXV0b3gunM=
 ```
-# $base64.decode(str[, encoding = 'utf-8'])
+## $base64.decode(str[, encoding = 'utf-8'])
 
 * `str` {string} 要解码的字符串
 * `encoding` {string} 可选，字符编码
