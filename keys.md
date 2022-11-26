@@ -148,7 +148,7 @@
 输入文字text。例如`Text("aaa");`
 
 ## KeyCode(code)
-* `code` {number} | <String> 要按下的按键的数字代码或名称。参见下表。
+* `code` {number} | {String} 要按下的按键的数字代码或名称。参见下表。
 模拟物理按键。例如`KeyCode(29)`和`KeyCode("KEYCODE_A")`是按下A键。
 
 # 附录: KeyCode对照表
