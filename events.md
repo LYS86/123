@@ -511,6 +511,7 @@ myEE.emit('foo');
 ```
 
 ## EventEmitter.once(eventName, listener)
+
 - `eventName` {any} 事件名
 - `listener` {Function} 回调函数
 
@@ -639,6 +640,7 @@ myEmitter.emit('event');
 返回一个 EventEmitter 引用，可以链式调用。
 
 # events.broadcast
+
 脚本间广播
 
 脚本间通信除了使用 engines 模块提供的`ScriptEngine.emit()`方法以外，也可以使用 events 模块提供的 broadcast 广播。
