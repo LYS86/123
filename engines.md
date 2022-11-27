@@ -9,6 +9,7 @@ engines 模块包含了一些与脚本环境、脚本运行、脚本引擎有关
 ```js
 toast(engines.myEngine().cwd());
 ```
+
 # Engines
 
 ## engines.execScript(name, script[, config])
@@ -21,11 +22,12 @@ toast(engines.myEngine().cwd());
   - `interval` {number} 循环运行时两次运行之间的时间间隔，默认为 0
   - `path` {Array} | {string} 指定脚本运行的目录。这些路径会用于 require 时寻找模块文件。
 
-在新的脚本环境中运行脚本 script。返回一个[ScriptExectuion](#ScriptExecution)对象。
+在新的脚本环境中运行脚本 script。返回一个[ScriptExecution](#scriptexecution)对象。
 
 所谓新的脚本环境，指定是，脚本中的变量和原脚本的变量是不共享的，并且，脚本会在新的线程中运行。
 
 最简单的例子如下：
+z
 
 ```js
 engines.execScript("hello world", "toast('hello world')");
@@ -77,7 +79,7 @@ exec(add, {a: 1, b:2});
   - `interval` {number} 循环运行时两次运行之间的时间间隔，默认为 0
   - `path` {Array} | {string} 指定脚本运行的目录。这些路径会用于 require 时寻找模块文件。
 
-在新的脚本环境中运行脚本文件 path。返回一个[ScriptExecution](#ScriptExecution)对象。
+在新的脚本环境中运行脚本文件 path。返回一个[ScriptExecution](#scriptexecution)对象。
 
 ```js
 engines.execScriptFile("/sdcard/脚本/1.js");
@@ -92,7 +94,7 @@ engines.execScriptFile("/sdcard/脚本/1.js");
   - `interval` {number} 循环运行时两次运行之间的时间间隔，默认为 0
   - `path` {Array} | {string} 指定脚本运行的目录。这些路径会用于 require 时寻找模块文件。
 
-在新的脚本环境中运行录制文件 path。返回一个[ScriptExecution](#ScriptExecution)对象。
+在新的脚本环境中运行录制文件 path。返回一个[ScriptExecution](#scriptexecution)对象。
 
 ```js
 engines.execAutoFile("/sdcard/脚本/1.auto");
@@ -108,7 +110,7 @@ engines.execAutoFile("/sdcard/脚本/1.auto");
 
 ## engines.myEngine()
 
-返回当前脚本的脚本引擎对象([ScriptEngine](#ScriptEngine))
+返回当前脚本的脚本引擎对象([ScriptEngine](#scriptengine))
 
 **[v4.1.0 新增]**
 特别的，该对象可以通过`execArgv`来获取他的运行参数，包括外部参数、intent 等。例如：
@@ -123,7 +125,7 @@ log(engines.myEngine().execArgv);
 
 - 返回 {Array}
 
-返回当前所有正在运行的脚本的脚本引擎[ScriptEngine](#ScriptEngine)的数组。
+返回当前所有正在运行的脚本的脚本引擎[ScriptEngine](#scriptengine)的数组。
 
 ```js
 log(engines.all());
@@ -137,21 +139,23 @@ log(engines.all());
 
 ## ScriptExecution.getEngine()
 
-返回执行该脚本的脚本引擎对象([ScriptEngine](#ScriptEngine))
+返回执行该脚本的脚本引擎对象([ScriptEngine](#scriptengine))
 
 ## ScriptExecution.getConfig()
 
-返回该脚本的运行配置([ScriptConfig](#ScriptConfig))
+返回该脚本的运行配置([ScriptConfig](#scriptconfig))
 
 # ScriptEngine
 
 脚本引擎对象。
 
 ## ScriptEngine.isDestroyed()
+
 - 返回 {Boolean}
 
 检测该脚本是否执行结束
-```
+
+```js
 let e = engines.execScriptFile("xx.js");
 sleep(2000);
 log(e.getEngine().isDestroyed())
