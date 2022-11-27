@@ -7,10 +7,10 @@ http模块提供一些进行http请求的函数。
 ## http.get(url[, options, callback])
 
 * `url` {string} 请求的URL地址，需要以"http://"或"https://"开头。如果url没有以"http://"开头，则默认为"http://"。
-* `options` {Object} 请求选项。参见[http.request()][]。
-* `callback` {Function} 回调函数，可选，其参数是一个[Response][]对象。如果不加回调函数，则该请求将阻塞、同步地执行。
+* `options` {Object} 请求选项。参见[http.request()](#httprequesturl-options-callback)。
+* `callback` {Function} 回调函数，可选，其参数是一个[Response](#response)对象。如果不加回调函数，则该请求将阻塞、同步地执行。
 
-对地址url进行一次HTTP GET 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应(参见[Response][])。
+对地址url进行一次HTTP GET 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应,(参见[Response](#response))。
 
 最简单GET请求如下:
 
@@ -69,9 +69,9 @@ if(res.statusCode != 200){
 * `url` {string} 请求的URL地址，需要以"http://"或"https://"开头。如果url没有以"http://"开头，则默认为"http://"。
 * `data` {string} | {Object} POST数据。
 * `options` {Object} 请求选项。
-* `callback` {Function} 回调，其参数是一个[Response][]对象。如果不加回调参数，则该请求将阻塞、同步地执行。
+* `callback` {Function} 回调，其参数是一个[Response](#response)对象。如果不加回调参数，则该请求将阻塞、同步地执行。
 
-对地址url进行一次HTTP POST 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应(参见[Response][])。
+对地址url进行一次HTTP POST 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应(参见[Response](#response))。
 
 其中POST数据可以是字符串或键值对。具体含义取决于options.contentType的值。默认为"application/x-www-form-urlencoded"(表单提交), 这种方式是JQuery的ajax函数的默认方式。
 
@@ -98,9 +98,9 @@ if(html.contains("页面跳转中")){
 * `url` {string} 请求的URL地址，需要以"http://"或"https://"开头。如果url没有以"http://"开头，则默认为"http://"。
 * `data` {Object} POST数据。
 * `options` {Object} 请求选项。
-* `callback` {Function} 回调，其参数是一个[Response][]对象。如果不加回调参数，则该请求将阻塞、同步地执行。
+* `callback` {Function} 回调，其参数是一个[Response](#response)对象。如果不加回调参数，则该请求将阻塞、同步地执行。
 
-以JSON格式向目标Url发起POST请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应(参见[Response][])。
+以JSON格式向目标Url发起POST请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应(参见[Response](#response))。
 
 JSON格式指的是，将会调用`JSON.stringify()`把data对象转换为JSON字符串，并在HTTP头部信息中把"Content-Type"属性置为"application/json"。这种方式是AngularJS的ajax函数的默认方式。
 
@@ -170,10 +170,9 @@ log(res.body.string());
 ## http.request(url[, options, callback])
 
 * `url` {string} 请求的URL地址，需要以"http://"或"https://"开头。如果url没有以"http://"开头，则默认为"http://"。
-* `options` {Object} 请求选项。参见[http.buildRequest()][]。
-* `callback` {Function} 回调，其参数是一个[Response][]对象。如果不加回调参数，则该请求将阻塞、同步地执行。
+* `callback` {Function} 回调，其参数是一个[Response](#response)对象。如果不加回调参数，则该请求将阻塞、同步地执行。
 
-对目标地址url发起一次HTTP请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应(参见[Response][])。
+对目标地址url发起一次HTTP请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应(参见[Response](#response))。
 
 选项options可以包含以下属性：
 
@@ -249,7 +248,7 @@ for(var headerName in res.headers){
 
 ## Response.request
 
-* {Request}
+* {Request}  
 当前响应所对应的请求。参见[Request][]。
 
 ## Response.url
@@ -259,5 +258,5 @@ for(var headerName in res.headers){
 
 ## Response.method
 
-* {string}
+* {string}  
 当前响应所对应的HTTP请求的方法。例如"GET", "POST", "PUT"等。
