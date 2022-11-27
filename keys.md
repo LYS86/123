@@ -179,7 +179,7 @@
 
 ### 附录: KeyCode对照表
 
-|KeyCode |KeyEvent Value  |
+|KeyCode|KeyEvent Value|
 |---|---|
 |KEYCODE_MENU|1|
 |KEYCODE_SOFT_RIGHT|2|
@@ -265,4 +265,4 @@
 |KEYCODE_MENU|82|
 |KEYCODE_NOTIFICATION|83|
 |KEYCODE_SEARCH|84|
-|TAG_LAST_|KEYCODE|85|
+|TAG_LAST_KEYCODE|85|
