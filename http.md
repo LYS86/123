@@ -170,6 +170,7 @@ log(res.body.string());
 ## http.request(url[, options, callback])
 
 * `url` {string} 请求的URL地址，需要以"http://"或"https://"开头。如果url没有以"http://"开头，则默认为"http://"。
+* `options` {Object} 请求选项。参见[http.buildRequest()]()。
 * `callback` {Function} 回调，其参数是一个[Response](#response)对象。如果不加回调参数，则该请求将阻塞、同步地执行。
 
 对目标地址url发起一次HTTP请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应(参见[Response](#response))。
