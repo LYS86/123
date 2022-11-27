@@ -1,10 +1,8 @@
 # AutoX.js 文档
 
-地址 : http://doc.autoxjs.com/
-
+地址 : <http://doc.autoxjs.com/>
 
 使用 [Docsify](https://github.com/docsifyjs/docsify/) 构建
-
 
 ## 本地开发
 
