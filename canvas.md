@@ -9,6 +9,7 @@ canvas.drawLine(0, 0, 1080, 1920, paint);
 ```
 
 canvas的绘制依赖于画笔Paint, 通过设置画笔的粗细、颜色、填充等可以改变绘制出来的图形。例如绘制一个红色实心正方形为：
+
 ```js
 var paint = new Paint();
 //设置画笔为填充，则绘制出来的图形都是实心的
@@ -20,6 +21,7 @@ canvas.drawRect(0, 0, 100, 100, paint);
 ```
 
 如果要绘制正方形的边框，则通过设置画笔的Style来实现：
+
 ```js
 var paint = new Paint();
 //设置画笔为描边，则绘制出来的图形都是轮廓
@@ -35,4 +37,3 @@ canvas.drawRect(0, 0, 100, 100, paint);
 ## canvas.drawARGB(a, r, g, b)
 
 ## canvas.draw
- 
