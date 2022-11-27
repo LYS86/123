@@ -2,8 +2,6 @@
 
 $crypto 模块提供了对称加密（例如AES）、非对称加密（例如RSA）、消息摘要（例如MD5, SHA）等支持。
 
-
-
 ```js
 let message = "未加密字符串";
 log("明文: ", message);
@@ -31,8 +29,6 @@ log("RSA私钥加密后二进制数据: ", rsa);
 log("RSA公钥解密: ", $crypto.decrypt(rsa, keyPair.publicKey, "RSA/ECB/PKCS1padding", {output: 'string'}));
 
 ```
-
-
 
 ```js
 
