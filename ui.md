@@ -21,10 +21,10 @@ ui 模块提供了编写用户界面的支持。
 ```js
 "ui";
 ui.layout(
-    <vertical>
-        <button text="第一个按钮"/>
-        <button text="第二个按钮"/>
-    </vertical>
+  <vertical>
+    <button text="第一个按钮" />
+    <button text="第二个按钮" />
+  </vertical>
 );
 ```
 
@@ -39,10 +39,10 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <horizontal>
-        <button text="第一个按钮"/>
-        <button text="第二个按钮"/>
-    </horizontal>
+  <horizontal>
+    <button text="第一个按钮" />
+    <button text="第二个按钮" />
+  </horizontal>
 );
 ```
 
@@ -55,10 +55,10 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <vertical bg="#ff0000">
-        <button text="第一个按钮" textSize="20sp"/>
-        <button text="第二个按钮"/>
-    </vertical>
+  <vertical bg="#ff0000">
+    <button text="第一个按钮" textSize="20sp" />
+    <button text="第二个按钮" />
+  </vertical>
 );
 ```
 
@@ -82,10 +82,10 @@ View 的宽度，是属性`width`的缩写形式。可以设置的值为`*`, `au
 ```js
 "ui";
 ui.layout(
-    <horizontal>
-        <button w="auto" text="自适应宽度"/>
-        <button w="*" text="填满父布局"/>
-    </horizontal>
+  <horizontal>
+    <button w="auto" text="自适应宽度" />
+    <button w="*" text="填满父布局" />
+  </horizontal>
 );
 ```
 
@@ -100,10 +100,10 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <horizontal>
-        <button w="200" text="宽度200dp"/>
-        <button w="100" text="宽度100dp"/>
-    </horizontal>
+  <horizontal>
+    <button w="200" text="宽度200dp" />
+    <button w="100" text="宽度100dp" />
+  </horizontal>
 );
 ```
 
@@ -122,9 +122,9 @@ View 的 id，用来区分一个界面下的不同控件和布局，一个界面
 ```js
 "ui";
 ui.layout(
-    <frame>
-        <button id="ok" text="确定"/>
-    </frame>
+  <frame>
+    <button id="ok" text="确定" />
+  </frame>
 );
 //通过ui.ok获取到按钮控件
 toast(ui.ok.getText());
@@ -150,9 +150,9 @@ View 的"重力"。用于决定 View 的内容相对于 View 的位置，可以�
 ```js
 "ui";
 ui.layout(
-    <frame>
-        <button gravity="right" w="*" h="auto" text="靠右的文字"/>
-    </frame>
+  <frame>
+    <button gravity="right" w="*" h="auto" text="靠右的文字" />
+  </frame>
 );
 ```
 
@@ -169,10 +169,15 @@ View 在布局中的"重力"，用于决定 View 本身在他的**父布局**的
 ```js
 "ui";
 ui.layout(
-    <frame w="*" h="*">
-        <button layout_gravity="center" w="auto" h="auto" text="居中的按钮"/>
-        <button layout_gravity="right|bottom" w="auto" h="auto" text="右下角的按钮"/>
-    </frame>
+  <frame w="*" h="*">
+    <button layout_gravity="center" w="auto" h="auto" text="居中的按钮" />
+    <button
+      layout_gravity="right|bottom"
+      w="auto"
+      h="auto"
+      text="右下角的按钮"
+    />
+  </frame>
 );
 ```
 
@@ -202,10 +207,10 @@ margin 为 View 和其他 View 的间距，即外边距。margin 属性包括四
 ```js
 "ui";
 ui.layout(
-    <horizontal>
-        <button margin="30" text="距离四周30"/>
-        <button text="普通的按钮"/>
-    </horizontal>
+  <horizontal>
+    <button margin="30" text="距离四周30" />
+    <button text="普通的按钮" />
+  </horizontal>
 );
 ```
 
@@ -226,10 +231,10 @@ View 的左外边距。如果该属性和 margin 属性指定的值冲突，则�
 ```js
 "ui";
 ui.layout(
-    <horizontal>
-        <button marginLeft="50" text="距离左边50"/>
-        <button text="普通的按钮"/>
-    </horizontal>
+  <horizontal>
+    <button marginLeft="50" text="距离左边50" />
+    <button text="普通的按钮" />
+  </horizontal>
 );
 ```
 
@@ -264,9 +269,15 @@ paddding 属性的值同样有三种格式：
 ```js
 "ui";
 ui.layout(
-    <frame w="*" h="*" gravity="center">
-        <text padding="10 20 30 40" bg="#ff0000" w="auto" h="auto" text="HelloWorld"/>
-    </frame>
+  <frame w="*" h="*" gravity="center">
+    <text
+      padding="10 20 30 40"
+      bg="#ff0000"
+      w="auto"
+      h="auto"
+      text="HelloWorld"
+    />
+  </frame>
 );
 ```
 
@@ -436,7 +447,7 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 
 当设置该属性后,TextView 显示的字符长度（单位是 em）,超出的部分将不显示，或者根据 ellipsize 属性的设置显示省略号。
 
-例如，限制文本最长为 5em: `<text ems="5" ellipsize="end" text="很长很长很长很长很长很长很长的文本"/>
+例如，限制文本最长为 5em: `<text ems="5" ellipsize="end" text="很长很长很长很长很长很长很长的文本"/>`
 
 ## autoLink
 
@@ -461,9 +472,9 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 
 除此之外，按钮控件有一些内置的样式，通过`style`属性设置，包括：
 
-- Widget.AppCompat.Button.Colored 带颜色的按钮
-- Widget.AppCompat.Button.Borderless 无边框按钮
-- Widget.AppCompat.Button.Borderless.Colored 带颜色的无边框按钮
+- `Widget.AppCompat.Button.Colored` 带颜色的按钮
+- `Widget.AppCompat.Button.Borderless` 无边框按钮
+- `Widget.AppCompat.Button.Borderless.Colored` 带颜色的无边框按钮
 
 这些样式的具体效果参见"示例/界面控件/按钮控件.js"。
 
@@ -480,18 +491,18 @@ ui.myText.setText("第一行\n第二行\n第三行\n第四行");
 ```js
 "ui";
 ui.layout(
-    <vertical padding="16">
-        <text textSize="16sp" textColor="black" text="请输入姓名"/>
-        <input id="name" text="小明"/>
-        <button id="ok" text="确定"/>
-    </vertical>
+  <vertical padding="16">
+    <text textSize="16sp" textColor="black" text="请输入姓名" />
+    <input id="name" text="小明" />
+    <button id="ok" text="确定" />
+  </vertical>
 );
 //指定确定按钮点击时要执行的动作
-ui.ok.click(function(){
-    //通过getText()获取输入的内容
-    //var name = ui.name.getText();
-    var name = ui.name.text();
-    toast(name + "您好!");
+ui.ok.click(function () {
+  //通过getText()获取输入的内容
+  //var name = ui.name.getText();
+  var name = ui.name.text();
+  toast(name + "您好!");
 });
 ```
 
@@ -512,10 +523,10 @@ ui.ok.click(function(){
 ```js
 "ui";
 ui.layout(
-    <vertical>
-        <input hint="请输入姓名"/>
-    </vertical>
-)
+  <vertical>
+    <input hint="请输入姓名" />
+  </vertical>
+);
 ```
 
 ## textColorHint
@@ -609,9 +620,9 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <frame>
-        <img src="https://www.baidu.com/img/bd_logo1.png"/>
-    </frame>
+  <frame>
+    <img src="https://www.baidu.com/img/bd_logo1.png" />
+  </frame>
 );
 ```
 
@@ -621,9 +632,13 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <frame>
-        <img w="40" h="40" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEu0lEQVRoge3bW4iVVRQH8N+ZnDKxvJUGCSWUlXYle/ChiKAkIiu7UXQjonwNIopM8cHoAhkRGQXdfIiE0Ep8KalQoptRTiFFZiRlOo6TPuSk4zk97G9w5vidc77LPjNi84f1MN+391rrf9a+rL32N4xiFMcUjouo5zyciYPYH0FnBadiNiZiD2oR9JbGRdgiOFPDIXRhCWYU0Dcj6duV6BrQuyWxNaLowBcOO1Uv+7EKc4WINUIlabMq6dNI35eJzRHDWOzS2MEB6cd6XI/OQf07k2frkzat9HQnNkcUG7R2dECq2I53EtmePMvaf+MwcWqKu+RzuqhUcfcwcWqKTvmiXFQ2GDodRhQz0aN9ZHsSG0cVrkGf+GT7MG8YeeTCHeKS7sOdMR1stjcWxY2YH0nXh1gdSdf/E+2I8KVYigkl9ewVUsxNpT1qMzaKN4ejJxrtyEt7IuraE1EX2jOkp+JBnFxSzz68KuTqoyiK2BHuxDO4NpK+j/GoOAWF6BiH98Q/SHyCycPIIxMm4FPZCPTj30SynIFr+A7ThotMK4wXopA1Ym9gSiKv5Oj3bdKnFMpuS514E1fm6NMnbF098s3NS4QS0Ik5+hyBsoSXYkGO9jvxy6C/t+IPIYJZcBWW57AXFfMNrSo2kqqw2l4hvSzcIRTw1sm24FVxb5s4NcR0/JXBuUNYJttI6sDjsi1kvTgrGpsMjq3O4FQNa+SbNhWsyKj7I4wpzSYDbpFtKB/EOSn9ZwpRfx5Xp7yfhN0Z9FdxXxxKjTEe2zI4U8NnKf3PNrT2VcWTKe1eyGjjT+Eapm14IqMjNTyd0n9JSrsDwhmaEN2H8GMOO8viUjyMSfJVJh9O0bGoQdt1eFm2oVwve7UpC1ssX568KEXH6fghp54s8lRkrk7CjpxOrGqg6wQ8IKSKWXPpVtIt8ly+v4ATf2t+yqlgDl5SbCjXy8JIXFXweQEHqngxo43JeEw54l+JVLKaJeypRZzoFxavrIWG6cKPW2SO9+PCMkQHsLiA8fpIv5/DmUn4qaCtpWWIEiLzdUHj9XJA2H5uFRbBZriuoI1NSpatpio+nJtFvFvYd2c1sDsGvxfQ3a/knrwgMtm0qD8rPSprCuq8uRmhVqvanBbvm+EQfsNKIcnvTmnTiUdwQcq73oJ2L2v2stXx6vyCRr8RDuk/C8OMUK24J6VtBaekPG81zxuh0TTJhC7FhtUOHF+n61whGalvu8uRWVJFvgPEYOkqQzhLVSPPXLoYa4Xh3Stcls1NaTdb8Xx7ZxnCvSUIfy/kzWno0Pyzx3dL2C0695Hto7NGUhXy5Lzp3kLZKiqNpNTl2+YShgdIvyXbVck44TB/oKTNzWUIv13S+IDsFmpY84QvZAcwTbh4e04o18SwtbIM4dsiOTFYVgzSv7wN+m9vRqjV/PrA0JuCox1bhYNKQ7Qi3CcU1fpiedRG9AkLXhRfbxCnKlET0s21ifwaSWcPbopBdDDOwGtClTD2vCsq+/C68K8HmVDk7DhFyIsvFzKnGThN+689+oU9dptwQb5B+LB8dx4lMb7xqAhkJwo/xljhFFSfSdUc3mPrcbwj15P+pP0/QiR7hYSkGsHnUYziWMF/mXV4JVcZ8G0AAAAASUVORK5CYII="/>
-    </frame>
+  <frame>
+    <img
+      w="40"
+      h="40"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEu0lEQVRoge3bW4iVVRQH8N+ZnDKxvJUGCSWUlXYle/ChiKAkIiu7UXQjonwNIopM8cHoAhkRGQXdfIiE0Ep8KalQoptRTiFFZiRlOo6TPuSk4zk97G9w5vidc77LPjNi84f1MN+391rrf9a+rL32N4xiFMcUjouo5zyciYPYH0FnBadiNiZiD2oR9JbGRdgiOFPDIXRhCWYU0Dcj6duV6BrQuyWxNaLowBcOO1Uv+7EKc4WINUIlabMq6dNI35eJzRHDWOzS2MEB6cd6XI/OQf07k2frkzat9HQnNkcUG7R2dECq2I53EtmePMvaf+MwcWqKu+RzuqhUcfcwcWqKTvmiXFQ2GDodRhQz0aN9ZHsSG0cVrkGf+GT7MG8YeeTCHeKS7sOdMR1stjcWxY2YH0nXh1gdSdf/E+2I8KVYigkl9ewVUsxNpT1qMzaKN4ejJxrtyEt7IuraE1EX2jOkp+JBnFxSzz68KuTqoyiK2BHuxDO4NpK+j/GoOAWF6BiH98Q/SHyCycPIIxMm4FPZCPTj30SynIFr+A7ThotMK4wXopA1Ym9gSiKv5Oj3bdKnFMpuS514E1fm6NMnbF098s3NS4QS0Ik5+hyBsoSXYkGO9jvxy6C/t+IPIYJZcBWW57AXFfMNrSo2kqqw2l4hvSzcIRTw1sm24FVxb5s4NcR0/JXBuUNYJttI6sDjsi1kvTgrGpsMjq3O4FQNa+SbNhWsyKj7I4wpzSYDbpFtKB/EOSn9ZwpRfx5Xp7yfhN0Z9FdxXxxKjTEe2zI4U8NnKf3PNrT2VcWTKe1eyGjjT+Eapm14IqMjNTyd0n9JSrsDwhmaEN2H8GMOO8viUjyMSfJVJh9O0bGoQdt1eFm2oVwve7UpC1ssX568KEXH6fghp54s8lRkrk7CjpxOrGqg6wQ8IKSKWXPpVtIt8ly+v4ATf2t+yqlgDl5SbCjXy8JIXFXweQEHqngxo43JeEw54l+JVLKaJeypRZzoFxavrIWG6cKPW2SO9+PCMkQHsLiA8fpIv5/DmUn4qaCtpWWIEiLzdUHj9XJA2H5uFRbBZriuoI1NSpatpio+nJtFvFvYd2c1sDsGvxfQ3a/knrwgMtm0qD8rPSprCuq8uRmhVqvanBbvm+EQfsNKIcnvTmnTiUdwQcq73oJ2L2v2stXx6vyCRr8RDuk/C8OMUK24J6VtBaekPG81zxuh0TTJhC7FhtUOHF+n61whGalvu8uRWVJFvgPEYOkqQzhLVSPPXLoYa4Xh3Stcls1NaTdb8Xx7ZxnCvSUIfy/kzWno0Pyzx3dL2C0695Hto7NGUhXy5Lzp3kLZKiqNpNTl2+YShgdIvyXbVck44TB/oKTNzWUIv13S+IDsFmpY84QvZAcwTbh4e04o18SwtbIM4dsiOTFYVgzSv7wN+m9vRqjV/PrA0JuCox1bhYNKQ7Qi3CcU1fpiedRG9AkLXhRfbxCnKlET0s21ifwaSWcPbopBdDDOwGtClTD2vCsq+/C68K8HmVDk7DhFyIsvFzKnGThN+689+oU9dptwQb5B+LB8dx4lMb7xqAhkJwo/xljhFFSfSdUc3mPrcbwj15P+pP0/QiR7hYSkGsHnUYziWMF/mXV4JVcZ8G0AAAAASUVORK5CYII="
+    />
+  </frame>
 );
 ```
 
@@ -713,11 +728,11 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <vertical h="100dp">
-        <text layout_weight="1" text="控件1" bg="#ff0000"/>
-        <text layout_weight="1" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
-    </vertical>
+  <vertical h="100dp">
+    <text layout_weight="1" text="控件1" bg="#ff0000" />
+    <text layout_weight="1" text="控件2" bg="#00ff00" />
+    <text layout_weight="1" text="控件3" bg="#0000ff" />
+  </vertical>
 );
 ```
 
@@ -727,11 +742,11 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <vertical h="100dp">
-        <text layout_weight="1" text="控件1" bg="#ff0000"/>
-        <text layout_weight="2" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
-    </vertical>
+  <vertical h="100dp">
+    <text layout_weight="1" text="控件1" bg="#ff0000" />
+    <text layout_weight="2" text="控件2" bg="#00ff00" />
+    <text layout_weight="1" text="控件3" bg="#0000ff" />
+  </vertical>
 );
 ```
 
@@ -741,11 +756,11 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <vertical h="100dp" weightSum="5">
-        <text layout_weight="1" text="控件1" bg="#ff0000"/>
-        <text layout_weight="2" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
-    </vertical>
+  <vertical h="100dp" weightSum="5">
+    <text layout_weight="1" text="控件1" bg="#ff0000" />
+    <text layout_weight="2" text="控件2" bg="#00ff00" />
+    <text layout_weight="1" text="控件3" bg="#0000ff" />
+  </vertical>
 );
 ```
 
@@ -755,11 +770,11 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <vertical h="100dp">
-        <text h="40dp" text="控件1" bg="#ff0000"/>
-        <text layout_weight="2" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
-    </vertical>
+  <vertical h="100dp">
+    <text h="40dp" text="控件1" bg="#ff0000" />
+    <text layout_weight="2" text="控件2" bg="#00ff00" />
+    <text layout_weight="1" text="控件3" bg="#0000ff" />
+  </vertical>
 );
 ```
 
@@ -770,11 +785,11 @@ ui.layout(
 ```js
 "ui";
 ui.layout(
-    <vertical h="100dp">
-        <text h="40dp" text="控件1" bg="#ff0000"/>
-        <text h="40dp" text="控件2" bg="#00ff00"/>
-        <text layout_weight="1" text="控件3" bg="#0000ff"/>
-    </vertical>
+  <vertical h="100dp">
+    <text h="40dp" text="控件1" bg="#ff0000" />
+    <text h="40dp" text="控件2" bg="#00ff00" />
+    <text layout_weight="1" text="控件3" bg="#0000ff" />
+  </vertical>
 );
 ```
 
@@ -841,24 +856,27 @@ ui.layout(
 # ui
 
 ## ui.layout(xml)
-- `xml` {XML} | {string} 布局XML或者XML字符串
 
-将布局XML渲染为视图（View）对象， 并设置为当前视图。
+- `xml` {XML} | {string} 布局 XML 或者 XML 字符串
+
+将布局 XML 渲染为视图（View）对象， 并设置为当前视图。
 
 ## ui.layoutFile(xmlFile)
-- `xmlFile` {string} 布局XML文件的路径
 
-读取本地XML文件渲染为视图（View）对象,并设置为当前视图。
+- `xmlFile` {string} 布局 XML 文件的路径
+
+读取本地 XML 文件渲染为视图（View）对象,并设置为当前视图。
 
 ## ui.inflate(xml[, parent = null, attachToParent = false])
-- `xml` { string | XML } 布局XML或者XML字符串
+
+- `xml` { string | XML } 布局 XML 或者 XML 字符串
 - `parent` {View} 父视图
-- `attachToParent` {boolean} 是否将渲染的View加到父视图中，默认为false
+- `attachToParent` {boolean} 是否将渲染的 View 加到父视图中，默认为 false
 - `return` {View}
 
-将布局XML渲染为视图（View）对象。如果该View将作为某个View的子View，我们建议传入`parent`参数，这样在渲染时依赖于父视图的一些布局属性能够正确应用。
+将布局 XML 渲染为视图（View）对象。如果该 View 将作为某个 View 的子 View，我们建议传入`parent`参数，这样在渲染时依赖于父视图的一些布局属性能够正确应用。
 
-此函数用于动态创建、显示View。
+此函数用于动态创建、显示 View。
 
 ```js
 // 动态创建3个控件，并加到container容器中
@@ -866,92 +884,103 @@ ui.layout(
 // 使用list组件；动态创建十几个、几十个View会让界面卡顿
 "ui";
 ui.layout(
-    <vertical id ="container" padding="16">
-        <button text="原有控件" w="*"/>
-    </vertical>
+  <vertical id="container" padding="16">
+    <button text="原有控件" w="*" />
+  </vertical>
 );
 for (let i = 0; i < 3; i++) {
-    let View = ui.inflate(
-        <button textColor="#19CAAD" text={"动态控件" + i} textSize="14sp" />, ui.container, true);
-    //ui.container.addView(View);
+  let View = ui.inflate(
+    <button textColor="#19CAAD" text={"动态控件" + i} textSize="14sp" />,
+    ui.container,
+    true
+  );
+  //ui.container.addView(View);
 }
-
 ```
 
 ## ui.findView(id)
-- `id` {string} View的ID
+
+- `id` {string} View 的 ID
 - 返回 {View}
 
-在当前视图中根据ID查找相应的视图对象并返回。如果当前未设置视图或找不到此ID的视图时返回`null`。
+在当前视图中根据 ID 查找相应的视图对象并返回。如果当前未设置视图或找不到此 ID 的视图时返回`null`。
 
-一般我们都是通过`ui.xxx`来获取id为xxx的控件，如果xxx是一个ui已经有的属性，就可以通过`ui.findView()`来获取这个控件
+一般我们都是通过`ui.xxx`来获取 id 为 xxx 的控件，如果 xxx 是一个 ui 已经有的属性，就可以通过`ui.findView()`来获取这个控件
 
 ## ui.isUiThread()
+
 - `return` {boolean}
 
-返回当前线程是否是UI线程。
+返回当前线程是否是 UI 线程。
+
 ```js
 "ui";
 log(ui.isUiThread()); // => true
-threads.start(function() {
-    log(ui.isUiThread()); // => false
+threads.start(function () {
+  log(ui.isUiThread()); // => false
 });
-
 ```
+
 ## ui.registerWidget(name, widget)
+
 - `name` {string} 组件名称
 - `widget` {Function} 组件
 
 注册一个自定义组件。参考示例->界面控件->自定义控件。
 
 ## ui.finish()
+
 结束当前活动并销毁界面。
 
 ## ui.setContentView(view)
--`view` {View}
+
+- `view` {View}
 
 将视图对象设置为当前视图。
 
 ## ui.run(callback)
--`callback` {Function} 回调函数
--`return` {any} callback的执行结果
 
-将`callback`在UI线程中执行。如果当前已经在UI线程中，则直接执行`callback`；否则将`callback`抛到UI线程中执行（加到UI线程的消息循环的末尾），**并等待callback执行结束(阻塞当前线程)**。
+- `callback` {Function} 回调函数
+- `return` {any} callback 的执行结果
+
+将`callback`在 UI 线程中执行。如果当前已经在 UI 线程中，则直接执行`callback`；否则将`callback`抛到 UI 线程中执行（加到 UI 线程的消息循环的末尾），**并等待 callback 执行结束(阻塞当前线程)**。
 
 ## ui.post(callback[, daley])
+
 - `callback` {Function} 回调函数
 - `delay` {number} 延迟，单位毫秒
 
-将`callback`加到UI线程的消息循环中，并延迟`delay`毫秒后执行（不能准确保证一定在delay毫秒后执行）。
+将`callback`加到 UI 线程的消息循环中，并延迟`delay`毫秒后执行（不能准确保证一定在 delay 毫秒后执行）。
 
-此函数可以用于UI线程中延时执行动作（sleep不能在UI线程中使用），也可以用于子线程中更新UI。
+此函数可以用于 UI 线程中延时执行动作（sleep 不能在 UI 线程中使用），也可以用于子线程中更新 UI。
 
 ```js
 "ui";
 ui.layout(
-    <frame>
-        <text id="result" />
-    </frame>
+  <frame>
+    <text id="result" />
+  </frame>
 );
 ui.result.setText("计算中");
 // 在子线程中计算;
 threads.start(function () {
-    let sum = 0;
-    for (let i = 0; i < 1000000; i++) {
-        sum += i;
-    };
-    // 由于不能在子线程操作UI，所以要抛到UI线程执行 
-    ui.post(() => {
-        ui.result.setText(String(sum))
-    });
+  let sum = 0;
+  for (let i = 0; i < 1000000; i++) {
+    sum += i;
+  }
+  // 由于不能在子线程操作UI，所以要抛到UI线程执行
+  ui.post(() => {
+    ui.result.setText(String(sum));
+  });
 });
-
 ```
 
 ## ui.statusBarColor(color)
+
 - `color` {string | number} 颜色
 
 设置当前界面的状态栏颜色。
+
 ```js
 "ui";
 ui.statusBarColor("#000000");
