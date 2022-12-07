@@ -38,17 +38,17 @@ engines.execScript("hello world", "toast('hello world')");
 ```js
 //每隔 3 秒运行一次脚本，循环 10 次
 engines.execScript("hello world", "toast('hello world')", {
-    loopTimes: 10,
-    interval: 3000
+  loopTimes: 10,
+  interval: 3000,
 });
 ```
 
 用字符串来编写脚本非常不方便，可以结合 `Function.toString()`的方法来执行特定函数:
 
 ```js
-function helloWorld(){
-    //注意，这里的变量和脚本主体的变量并不共享
-    toast("hello world");
+function helloWorld() {
+  //注意，这里的变量和脚本主体的变量并不共享
+  toast("hello world");
 }
 engines.execScript("hello world", "helloWorld();\n" + helloWorld.toString());
 ```
@@ -56,18 +56,21 @@ engines.execScript("hello world", "helloWorld();\n" + helloWorld.toString());
 如果要传递变量，则可以把这些封装成一个函数：
 
 ```js
-function exec(action, args){
-    args = args || {};
-    engines.execScript(action.name, action + "(" + JSON.stringify(args) + ");\n" + action.toString());
+function exec(action, args) {
+  args = args || {};
+  engines.execScript(
+    action.name,
+    action + "(" + JSON.stringify(args) + ");\n" + action.toString()
+  );
 }
 
 //要执行的函数，是一个简单的加法
-function add(args){
-    toast(args.a + args.b);
+function add(args) {
+  toast(args.a + args.b);
 }
 
 //在新的脚本环境中执行 1 + 2
-exec(add, {a: 1, b:2});
+exec(add, { a: 1, b: 2 });
 ```
 
 ## engines.execScriptFile(path[, config])
@@ -158,7 +161,7 @@ log(engines.all());
 ```js
 let e = engines.execScriptFile("xx.js");
 sleep(2000);
-log(e.getEngine().isDestroyed())
+log(e.getEngine().isDestroyed());
 ```
 
 ## ScriptEngine.forceStop()
@@ -192,11 +195,11 @@ log(engines.myEngine().getSource());
 
 ```js
 //监听 say 事件
-events.on("say", function(words){
-    toastLog(words);
+events.on("say", function (words) {
+  toastLog(words);
 });
 //保持脚本运行
-setInterval(()=>{}, 1000);
+setInterval(() => {}, 1000);
 ```
 
 同一目录另一脚本可以启动他并发送该事件：
