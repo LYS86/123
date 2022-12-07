@@ -1,14 +1,12 @@
 # Floaty
 
-floaty模块提供了悬浮窗的相关函数，可以在屏幕上显示自定义悬浮窗，控制悬浮窗大小、位置等。
+floaty 模块提供了悬浮窗的相关函数，可以在屏幕上显示自定义悬浮窗，控制悬浮窗大小、位置等。
 
-悬浮窗在脚本停止运行时会自动关闭，因此，要保持悬浮窗不被关闭，可以用一个空的setInterval来实现，例如：
+悬浮窗在脚本停止运行时会自动关闭，因此，要保持悬浮窗不被关闭，可以用一个空的 `setInterval` 来实现，例如：
 
 ```js
-setInterval(()=>{}, 1000);
+setInterval(() => {}, 1000);
 ```
-
-# Floaty
 
 ## floaty.checkPermission()
 
@@ -26,45 +24,47 @@ setInterval(()=>{}, 1000);
 
 ```js
 if (!floaty.checkPermission()) {
-    // 没有悬浮窗权限，提示用户并跳转请求
-    toast("本脚本需要悬浮窗权限来显示悬浮窗，请在随后的界面中允许并重新运行本脚本。");
-    floaty.requestPermission();
-    exit();
+  // 没有悬浮窗权限，提示用户并跳转请求
+  toast(
+    "本脚本需要悬浮窗权限来显示悬浮窗，请在随后的界面中允许并重新运行本脚本。"
+  );
+  floaty.requestPermission();
+  exit();
 } else {
-    toastLog('已有悬浮窗权限');
+  toastLog("已有悬浮窗权限");
 }
 ```
 
 ## floaty.window(layout)
 
-- `layout` {xml} | {View} 悬浮窗界面的XML或者View
+- `layout` {xml} | {View} 悬浮窗界面的 XML 或者 View
 
 指定悬浮窗的布局，创建并**显示**一个悬浮窗，返回一个[FloatyWindow](#floatywindow)对象。
 
 该悬浮窗自带关闭、调整大小、调整位置按键，可根据需要调用`setAdjustEnabled()`函数来显示或隐藏。
 
-其中layout参数可以是xml布局或者一个View，更多信息参见ui模块的说明。
+其中 `layout` 参数可以是 xml 布局或者一个 View，更多信息参见 ui 模块的说明。
 
 例子：
 
 ```js
 var w = floaty.window(
-    <frame gravity="center">
-        <text id="text">悬浮文字</text>
-    </frame>
+  <frame gravity="center">
+    <text id="text">悬浮文字</text>
+  </frame>
 );
-setTimeout(()=>{
-    w.close();
+setTimeout(() => {
+  w.close();
 }, 2000);
 ```
 
 这段代码运行后将会在屏幕上显示悬浮文字，并在两秒后消失。
 
-另外，因为脚本运行的线程不是UI线程，而所有对控件的修改操作需要在UI线程执行，此时需要用`ui.run`，例如:
+另外，因为脚本运行的线程不是 UI 线程，而所有对控件的修改操作需要在 UI 线程执行，此时需要用`ui.run`，例如:
 
 ```js
-ui.run(function(){
-    w.text.setText("文本");
+ui.run(function () {
+  w.text.setText("文本");
 });
 ```
 
@@ -72,7 +72,7 @@ ui.run(function(){
 
 ## floaty.rawWindow(layout)
 
-- `layout` {xml} | {View} 悬浮窗界面的XML或者View
+- `layout` {xml} | {View} 悬浮窗界面的 XML 或者 View
 
 指定悬浮窗的布局，创建并**显示**一个原始悬浮窗，返回一个[FloatyRawWindow](#floatyrawwindow)对象。
 
@@ -82,15 +82,15 @@ ui.run(function(){
 
 ```js
 var w = floaty.rawWindow(
-    <frame gravity="center">
-        <text id="text">悬浮文字</text>
-    </frame>
+  <frame gravity="center">
+    <text id="text">悬浮文字</text>
+  </frame>
 );
 
 w.setPosition(500, 500);
 
-setTimeout(()=>{
-    w.close();
+setTimeout(() => {
+  w.close();
 }, 2000);
 ```
 
@@ -104,14 +104,14 @@ setTimeout(()=>{
 
 # FloatyWindow
 
-悬浮窗对象，可通过`FloatyWindow.{id}`获取悬浮窗界面上的元素。例如, 悬浮窗window上一个控件的id为aaa, 那么`window.aaa`即可获取到该控件，类似于ui。
+悬浮窗对象，可通过`FloatyWindow.{id}`获取悬浮窗界面上的元素。例如, 悬浮窗 window 上一个控件的 id 为 aaa, 那么`window.aaa`即可获取到该控件，类似于 ui。
 
 ## window.setAdjustEnabled(enabled)
 
 - `enabled` {boolean} 是否启用悬浮窗调整(大小、位置)
 
-如果enabled为true，则在悬浮窗左上角、右上角显示可供位置、大小调整的标示，就像控制台一样；
-如果enabled为false，则隐藏上述标示。
+如果 enabled 为 true，则在悬浮窗左上角、右上角显示可供位置、大小调整的标示，就像控制台一样；
+如果 enabled 为 false，则隐藏上述标示。
 
 ## window.setPosition(x, y)
 
@@ -122,11 +122,11 @@ setTimeout(()=>{
 
 ## window.getX()
 
-返回悬浮窗位置的X坐标。
+返回悬浮窗位置的 X 坐标。
 
 ## window.getY()
 
-返回悬浮窗位置的Y坐标。
+返回悬浮窗位置的 Y 坐标。
 
 ## window.setSize(width, height)
 
@@ -155,28 +155,25 @@ setTimeout(()=>{
 
 # FloatyRawWindow
 
-原始悬浮窗对象，可通过`window.{id}`获取悬浮窗界面上的元素。例如, 悬浮窗window上一个控件的id为aaa, 那么`window.aaa`即可获取到该控件，类似于ui。
+原始悬浮窗对象，可通过`window.{id}`获取悬浮窗界面上的元素。例如, 悬浮窗 window 上一个控件的 id 为 aaa, 那么`window.aaa`即可获取到该控件，类似于 ui。
 
 ## window.setTouchable(touchable)
 
 - `touchable` {Boolean} 是否可触摸
 
-设置悬浮窗是否可触摸，如果为true, 则悬浮窗将接收到触摸、点击等事件并且无法继续传递到悬浮窗下面；如果为false, 悬浮窗上的触摸、点击等事件将被直接传递到悬浮窗下面。处于安全考虑，被悬浮窗接收的触摸事情无法再继续传递到下层。
+设置悬浮窗是否可触摸，如果为 true, 则悬浮窗将接收到触摸、点击等事件并且无法继续传递到悬浮窗下面；如果为 false, 悬浮窗上的触摸、点击等事件将被直接传递到悬浮窗下面。处于安全考虑，被悬浮窗接收的触摸事情无法再继续传递到下层。
 
 可以用此特性来制作护眼模式脚本。
 
 ```js
-var w = floaty.rawWindow(
-    <frame gravity="center" bg="#44ffcc00"/>
-);
+var w = floaty.rawWindow(<frame gravity="center" bg="#44ffcc00" />);
 
 w.setSize(-1, -1);
 w.setTouchable(false);
 
-setTimeout(()=>{
-    w.close();
+setTimeout(() => {
+  w.close();
 }, 4000);
-
 ```
 
 ## window.setPosition(x, y)
@@ -188,11 +185,11 @@ setTimeout(()=>{
 
 ## window.getX()
 
-返回悬浮窗位置的X坐标。
+返回悬浮窗位置的 X 坐标。
 
 ## window.getY()
 
-返回悬浮窗位置的Y坐标。
+返回悬浮窗位置的 Y 坐标。
 
 ## window.setSize(width, height)
 
@@ -201,21 +198,20 @@ setTimeout(()=>{
 
 设置悬浮窗宽高。
 
-特别地，如果设置为-1，则为占满全屏；设置为-2则为根据悬浮窗内容大小而定。例如：
+如果设置为-1，则为占满全屏；设置为-2 则为根据悬浮窗内容大小而定。例如：
 
 ```js
 var w = floaty.rawWindow(
-    <frame gravity="center" bg="#77ff0000">
-        <text id="text">悬浮文字</text>
-    </frame>
+  <frame gravity="center" bg="#77ff0000">
+    <text id="text">悬浮文字</text>
+  </frame>
 );
 
 w.setSize(-1, -1);
 
-setTimeout(()=>{
-    w.close();
+setTimeout(() => {
+  w.close();
 }, 2000);
-
 ```
 
 ## window.getWidht()
