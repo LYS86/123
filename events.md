@@ -11,12 +11,12 @@ events 本身是一个[EventEmiiter](#eventemitter), 但内置了一些事件、
 ```js
 auto();
 events.observeNotification();
-events.on('toast', function(t){
-    //这段代码将得不到执行
-    log(t);
+events.on("toast", function (t) {
+  //这段代码将得不到执行
+  log(t);
 });
-while(true){
-    //死循环
+while (true) {
+  //死循环
 }
 ```
 
@@ -45,13 +45,13 @@ while(true){
 //启用按键监听
 events.observeKey();
 //监听音量上键按下
-events.onKeyDown("volume_up", function(event){
-    toast("音量上键被按下了");
+events.onKeyDown("volume_up", function (event) {
+  toast("音量上键被按下了");
 });
 //监听菜单键按下
-events.onKeyDown("menu", function(event){
-    toast("菜单键被按下了");
-    exit();
+events.onKeyDown("menu", function (event) {
+  toast("菜单键被按下了");
+  exit();
 });
 ```
 
@@ -70,13 +70,13 @@ events.onKeyDown("menu", function(event){
 //启用按键监听
 events.observeKey();
 //监听音量下键弹起
-events.onKeyDown("volume_down", function(event){
-    toast("音量下键弹起");
+events.onKeyDown("volume_down", function (event) {
+  toast("音量下键弹起");
 });
 //监听Home键弹起
-events.onKeyDown("home", function(event){
-    toast("Home键弹起");
-    exit();
+events.onKeyDown("home", function (event) {
+  toast("Home键弹起");
+  exit();
 });
 ```
 
@@ -126,8 +126,8 @@ events.onKeyDown("home", function(event){
 ```js
 events.setKeyInterceptionEnabled("volume_up", true);
 events.observeKey();
-events.onKeyDown("volume_up", ()=>{
-    log("音量上键被按下");
+events.onKeyDown("volume_up", () => {
+  log("音量上键被按下");
 });
 ```
 
@@ -167,9 +167,9 @@ events.onKeyDown("volume_up", ()=>{
 //启用触摸监听
 events.observeTouch();
 //注册触摸监听器
-events.onTouch(function(p){
-    //触摸事件发生时, 打印出触摸的点的坐标
-    log(p.x + ", " + p.y);
+events.onTouch(function (p) {
+  //触摸事件发生时, 打印出触摸的点的坐标
+  log(p.x + ", " + p.y);
 });
 ```
 
@@ -188,8 +188,8 @@ events.onTouch(function(p){
 ```js
 auto();
 events.observeKey();
-events.on("key", function(keyCode, event){
-    //处理按键事件
+events.on("key", function (keyCode, event) {
+  //处理按键事件
 });
 ```
 
@@ -206,10 +206,10 @@ events.on("key", function(keyCode, event){
 ```js
 auto();
 events.observeKey();
-events.on("key", function(keyCode, event){
-    if(keyCode == keys.menu && event.getAction() == event.ACTION_UP){
-        toast("菜单键按下");
-    }
+events.on("key", function (keyCode, event) {
+  if (keyCode == keys.menu && event.getAction() == event.ACTION_UP) {
+    toast("菜单键按下");
+  }
 });
 ```
 
@@ -223,8 +223,8 @@ events.on("key", function(keyCode, event){
 ```js
 auto();
 events.observeKey();
-events.on("key_down", function(keyCode, event){
-    //处理按键按下事件
+events.on("key_down", function (keyCode, event) {
+  //处理按键按下事件
 });
 ```
 
@@ -238,8 +238,8 @@ events.on("key_down", function(keyCode, event){
 ```js
 auto();
 events.observeKey();
-events.on("key_up", function(keyCode, event){
-    //处理按键弹起事件
+events.on("key_up", function (keyCode, event) {
+  //处理按键弹起事件
 });
 ```
 
@@ -251,9 +251,9 @@ events.on("key_up", function(keyCode, event){
 此时脚本会停留在任务列表，如果在任务列表中关闭，则会强制结束 exit 事件的处理并回收后续资源。
 
 ```js
-log("开始运行")
-events.on("exit", function(){
-    log("结束运行");
+log("开始运行");
+events.on("exit", function () {
+  log("结束运行");
 });
 log("即将结束运行");
 ```
@@ -268,8 +268,8 @@ log("即将结束运行");
 
 ```js
 events.observeNotification();
-events.onNotification(function(notification){
-    log(notification.getText());
+events.onNotification(function (notification) {
+  log(notification.getText());
 });
 ```
 
@@ -291,8 +291,8 @@ Toast 监听依赖于无障碍服务，因此此函数会确保无障碍服务�
 
 ```js
 events.observeToast();
-events.onToast(function(toast){
-    log("Toast内容: " + toast.getText() + " 包名: " + toast.getPackageName());
+events.onToast(function (toast) {
+  log("Toast内容: " + toast.getText() + " 包名: " + toast.getPackageName());
 });
 ```
 
@@ -306,8 +306,13 @@ events.onToast(function(toast){
 
 ```js
 events.observeNotification();
-events.on("notification", function(n){
-    log("收到新通知:\n 标题: %s, 内容: %s, \n包名: %s", n.getTitle(), n.getText(), n.getPackageName());
+events.on("notification", function (n) {
+  log(
+    "收到新通知:\n 标题: %s, 内容: %s, \n包名: %s",
+    n.getTitle(),
+    n.getText(),
+    n.getPackageName()
+  );
 });
 ```
 
@@ -329,8 +334,8 @@ events.on("notification", function(n){
 
 ```js
 events.observeNotification();
-events.on("notification", function(n){
-    log("通知时间为}" + new Date(n.when));
+events.on("notification", function (n) {
+  log("通知时间为}" + new Date(n.when));
 });
 ```
 
@@ -421,7 +426,7 @@ events.on("notification", function(n){
 
 ```js
 emitter.setMaxListeners(emitter.getMaxListeners() + 1);
-emitter.once('event', () => {
+emitter.once("event", () => {
   // 做些操作
   emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0));
 });
@@ -449,10 +454,10 @@ emitter.on(eventName, listener) 的别名。
 
 ```js
 const myEE = events.emitter();
-myEE.on('foo', () => {});
-myEE.on('bar', () => {});
+myEE.on("foo", () => {});
+myEE.on("bar", () => {});
 
-const sym = Symbol('symbol');
+const sym = Symbol("symbol");
 myEE.on(sym, () => {});
 
 console.log(myEE.eventNames());
@@ -476,10 +481,10 @@ console.log(myEE.eventNames());
 返回名为 eventName 的事件的监听器数组的副本。
 
 ```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
+server.on("connection", (stream) => {
+  console.log("someone connected!");
 });
-console.log(util.inspect(server.listeners('connection')));
+console.log(util.inspect(server.listeners("connection")));
 // 打印: [ [Function] ]
 ```
 
@@ -491,8 +496,8 @@ console.log(util.inspect(server.listeners('connection')));
 添加 listener 函数到名为 eventName 的事件的监听器数组的末尾。 不会检查 listener 是否已被添加。 多次调用并传入相同的 eventName 和 listener 会导致 listener 被添加与调用多次。
 
 ```js
-server.on('connection', (stream) => {
-  console.log('有连接！');
+server.on("connection", (stream) => {
+  console.log("有连接！");
 });
 ```
 
@@ -502,9 +507,9 @@ server.on('connection', (stream) => {
 
 ```js
 const myEE = events.emitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
+myEE.on("foo", () => console.log("a"));
+myEE.prependListener("foo", () => console.log("b"));
+myEE.emit("foo");
 // 打印:
 //   b
 //   a
@@ -518,8 +523,8 @@ myEE.emit('foo');
 添加一个单次 listener 函数到名为 eventName 的事件。 下次触发 eventName 事件时，监听器会被移除，然后调用。
 
 ```js
-server.once('connection', (stream) => {
-  console.log('首次调用！');
+server.once("connection", (stream) => {
+  console.log("首次调用！");
 });
 ```
 
@@ -529,9 +534,9 @@ server.once('connection', (stream) => {
 
 ```js
 const myEE = events.emitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
+myEE.once("foo", () => console.log("a"));
+myEE.prependOnceListener("foo", () => console.log("b"));
+myEE.emit("foo");
 // 打印:
 //   b
 //   a
@@ -545,8 +550,8 @@ myEE.emit('foo');
 添加 listener 函数到名为 eventName 的事件的监听器数组的开头。 不会检查 listener 是否已被添加。 多次调用并传入相同的 eventName 和 listener 会导致 listener 被添加与调用多次。
 
 ```js
-server.prependListener('connection', (stream) => {
-  console.log('有连接！');
+server.prependListener("connection", (stream) => {
+  console.log("有连接！");
 });
 ```
 
@@ -560,8 +565,8 @@ server.prependListener('connection', (stream) => {
 添加一个单次 listener 函数到名为 eventName 的事件的监听器数组的开头。 下次触发 eventName 事件时，监听器会被移除，然后调用。
 
 ```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('首次调用！');
+server.prependOnceListener("connection", (stream) => {
+  console.log("首次调用！");
 });
 ```
 
@@ -586,11 +591,11 @@ server.prependOnceListener('connection', (stream) => {
 
 ```js
 const callback = (stream) => {
-  console.log('有连接！');
+  console.log("有连接！");
 };
-server.on('connection', callback);
+server.on("connection", callback);
 // ...
-server.removeListener('connection', callback);
+server.removeListener("connection", callback);
 ```
 
 removeListener 最多只会从监听器数组里移除一个监听器实例。 如果任何单一的监听器被多次添加到指定 eventName 的监听器数组中，则必须多次调用 removeListener 才能移除每个实例。
@@ -601,28 +606,28 @@ removeListener 最多只会从监听器数组里移除一个监听器实例。 �
 const myEmitter = events.emitter();
 
 const callbackA = () => {
-  console.log('A');
-  myEmitter.removeListener('event', callbackB);
+  console.log("A");
+  myEmitter.removeListener("event", callbackB);
 };
 
 const callbackB = () => {
-  console.log('B');
+  console.log("B");
 };
 
-myEmitter.on('event', callbackA);
+myEmitter.on("event", callbackA);
 
-myEmitter.on('event', callbackB);
+myEmitter.on("event", callbackB);
 
 // callbackA 移除了监听器 callbackB，但它依然会被调用。
 // 触发是内部的监听器数组为 [callbackA, callbackB]
-myEmitter.emit('event');
+myEmitter.emit("event");
 // 打印:
 //   A
 //   B
 
 // callbackB 被移除了。
 // 内部监听器数组为 [callbackA]
-myEmitter.emit('event');
+myEmitter.emit("event");
 // 打印:
 //   A
 ```
@@ -656,9 +661,9 @@ events.broadcast.emit("hello", "小明");
 在其他脚本中监听并处理：
 
 ```js
-events.broadcast.on("hello", function(name){
-    toast("你好, " + name);
+events.broadcast.on("hello", function (name) {
+  toast("你好, " + name);
 });
 //保持脚本运行
-setInterval(()=>{}, 1000);
+setInterval(() => {}, 1000);
 ```
