@@ -33,7 +33,7 @@ auto();
 
 ## auto.waitFor()
 
-检查无障碍服务是否已经启用，如果没有启用则跳转到无障碍服务启用界面，并等待无障碍服务启动；当无障碍服务启动后脚本会继续运行。
+检查无障碍服务是否已经启用，如果没有启用则跳转到无障碍服务启用界面，并等待无障碍服务启动后脚本会继续运行。
 
 ## auto.setMode(mode)
 
@@ -61,7 +61,7 @@ SimpleActionAutomator 提供了一些模拟简单操作的函数，例如点击�
 通常与 while 同时使用以便点击按钮直至成功。例如:
 
 ```js
-while(!click("扫一扫"));
+while (!click("扫一扫"));
 ```
 
 当不指定参数 i 时则会尝试点击屏幕上出现的所有文字 text 并返回是否全部点击成功。
@@ -77,7 +77,7 @@ i 是从 0 开始计算的, 也就是, `click("啦啦啦", 0)`表示点击屏幕
 - `bottom` {number} 要点击的长方形区域下边与屏幕下边的像素距离
 - `right` {number} 要点击的长方形区域右边与屏幕右边的像素距离
 
-**注意，该函数一般只用于录制的脚本中使用，在自己写的代码中使用该函数一般不要使用该函数。**
+**注意，该函数一般只用于录制的脚本中使用，在自己写的代码中尽量不要使用该函数。**
 
 点击在指定区域的控件。当屏幕中并未包含与该区域严格匹配的区域，或者该区域不能点击时返回 false，否则返回 true。
 
@@ -118,8 +118,8 @@ i 是从 0 开始计算的, 也就是, `click("啦啦啦", 0)`表示点击屏幕
 
 ## setText([i, ]text)
 
-- i {number} 表示要输入的为第 i + 1 个输入框
-- text {string} 要输入的文本
+- `i` {number} 表示要输入的为第 i + 1 个输入框
+- `text` {string} 要输入的文本
 
 返回是否输入成功。当找不到对应的文本框时返回 false。
 
@@ -129,8 +129,8 @@ i 是从 0 开始计算的, 也就是, `click("啦啦啦", 0)`表示点击屏幕
 
 ## input([i, ]text)
 
-- i {number} 表示要输入的为第 i + 1 个输入框
-- text {string} 要输入的文本
+- `i` {number} 表示要输入的为第 i + 1 个输入框
+- `text` {string} 要输入的文本
 
 返回是否输入成功。当找不到对应的文本框时返回 false。
 
@@ -202,18 +202,18 @@ desc("搜索").findOne().click();
 这些操作包含了绝大部分控件操作。根据这些我们可以很容易写出一个"刷屏"脚本(代码仅为示例，请不要在别人的群里测试，否则容易被踢):
 
 ```js
-while(true){
-    className("EditText").findOne().setText("刷屏...");
-    text("发送").findOne().clicK();
+while (true) {
+  className("EditText").findOne().setText("刷屏...");
+  text("发送").findOne().clicK();
 }
 ```
 
 上面这段代码也可以写成：
 
 ```js
-while(true){
-    className("EditText").setText("刷屏...");
-    text("发送").clicK();
+while (true) {
+  className("EditText").setText("刷屏...");
+  text("发送").clicK();
 }
 ```
 
@@ -229,7 +229,7 @@ id("recent_chat_list").className("AbsListView").findOne().scrollForward();
 
 `scrollForward()`为向前滑，包括下滑和右滑。
 
-选择器的入门教程暂且要这里，更多信息可以查看下面的文档和选择器进阶。
+选择器的入门教程暂且到这里，更多信息可以查看下面的文档和选择器进阶。
 
 ## selector()
 
@@ -268,7 +268,7 @@ id("recent_chat_list").className("AbsListView").findOne().scrollForward();
 
 ## UiSelector.textEndsWith(suffix)
 
-- suffix {string} 后缀
+- `suffix` {string} 后缀
 
 为当前选择器附加控件"text 需要以 suffix 结束"的筛选条件。
 
@@ -278,7 +278,7 @@ id("recent_chat_list").className("AbsListView").findOne().scrollForward();
 
 为当前选择器附加控件"text 需要满足正则表达式 reg"的条件。
 
-有关正则表达式，可以查看[正则表达式 - 菜鸟教程](http://www.runoob.com/Stringp/Stringp-example.html)。
+有关正则表达式，可以查看[正则表达式 - 菜鸟教程](https://www.runoob.com/jsref/jsref-obj-regexp.html)。
 
 需要注意的是，如果正则表达式是字符串，则需要使用`\\`来表达`\`(也即 Java 正则表达式的形式)，例如`textMatches("\\d+")`匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如`textMatches(/\d+/)`。但如果使用字符串的正则表达式则该字符串不能以"/"同时以"/"结束，也即不能写诸如`textMatches("/\\d+/")`的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
 
@@ -317,7 +317,7 @@ desc 属性同样是定位控件的利器。
 
 为当前选择器附加控件"desc 需要满足正则表达式 reg"的条件。
 
-有关正则表达式，可以查看[正则表达式 - 菜鸟教程](http://www.runoob.com/Stringp/Stringp-example.html)。
+有关正则表达式，可以查看[正则表达式 - 菜鸟教程](https://www.runoob.com/jsref/jsref-obj-regexp.html)。
 
 需要注意的是，如果正则表达式是字符串，则需要使用`\\`来表达`\`(也即 Java 正则表达式的形式)，例如`textMatches("\\d+")`匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如`textMatches(/\d+/)`。但如果使用字符串的正则表达式则该字符串不能以"/"同时以"/"结束，也即不能写诸如`textMatches("/\\d+/")`的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
 
@@ -351,14 +351,14 @@ desc 属性同样是定位控件的利器。
 
 ## UiSelector.idMatches(reg)
 
-- reg {Regex} | {string} id 要满足的正则表达式
+- `reg` {Regex} | {string} id 要满足的正则表达式
 
 附加 id 需要满足正则表达式。
 
 需要注意的是，如果正则表达式是字符串，则需要使用`\\`来表达`\`(也即 Java 正则表达式的形式)，例如`textMatches("\\d+")`匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如`textMatches(/\d+/)`。但如果使用字符串的正则表达式则该字符串不能以"/"同时以"/"结束，也即不能写诸如`textMatches("/\\d+/")`的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
 
 ```js
-idMatches("[a-zA-Z]+")
+idMatches("[a-zA-Z]+");
 ```
 
 ## UiSelector.className(str)
@@ -475,7 +475,9 @@ idMatches("[a-zA-Z]+")
 这个条件用于限制选择器在某一个区域选择控件。例如要在屏幕上半部分寻找文本控件 TextView，代码为:
 
 ```js
-var w = className("TextView").boundsInside(0, 0, device.width, device.height / 2).findOne();
+var w = className("TextView")
+  .boundsInside(0, 0, device.width, device.height / 2)
+  .findOne();
 log(w.text());
 ```
 
@@ -493,13 +495,15 @@ log(w.text());
 这个条件用于限制控件的范围必须包含所给定的范围。例如给定一个点(500, 300), 寻找在这个点上的可点击控件的代码为:
 
 ```js
-var w = boundsContains(500, 300, device.width - 500, device.height - 300).clickable().findOne();
+var w = boundsContains(500, 300, device.width - 500, device.height - 300)
+  .clickable()
+  .findOne();
 w.click();
 ```
 
 ## UiSelector.drawingOrder(order)
 
-- order {number} 控件在父视图中的绘制顺序
+- `order` {number} 控件在父视图中的绘制顺序
 
 为当前选择器附加控件"drawingOrder 等于 order"的条件。
 
@@ -548,7 +552,10 @@ drawingOrder 为一个控件在父控件中的绘制顺序，通常可以用于�
 可以用这个条件来寻找可滑动控件来滑动界面。例如滑动 Auto.js 的脚本列表的代码为:
 
 ```js
-className("android.support.v7.widget.RecyclerView").scrollable().findOne().scrollForward();
+className("android.support.v7.widget.RecyclerView")
+  .scrollable()
+  .findOne()
+  .scrollForward();
 //或者classNameEndsWith("RecyclerView").scrollable().findOne().scrollForward();
 ```
 
@@ -560,7 +567,7 @@ className("android.support.v7.widget.RecyclerView").scrollable().findOne().scrol
 
 ## UiSelector.multiLine([b = true])
 
-- b {Boolean} 表示文本或输入框控件是否是多行显示的
+- `b` {Boolean} 表示文本或输入框控件是否是多行显示的
 
 为当前选择器附加控件是否文本或输入框控件是否是多行显示的条件。
 
@@ -593,11 +600,11 @@ launchApp("Auto.js");
 //在6秒内找出日志图标的控件
 var w = id("action_log").findOne(6000);
 //如果找到控件则点击
-if(w != null){
-    w.click();
-}else{
-    //否则提示没有找到
-    toast("没有找到日志图标");
+if (w != null) {
+  w.click();
+} else {
+  //否则提示没有找到
+  toast("没有找到日志图标");
 }
 ```
 
@@ -627,10 +634,10 @@ if(w != null){
 
 ```js
 var c = className("AbsListView").find();
-if(c.empty()){
-    toast("找到啦");
-}else{
-    toast("没找到╭(╯^╰)╮");
+if (c.empty()) {
+  toastLog("没找到╭(╯^╰)╮");
+} else {
+  toastLog("找到啦");
 }
 ```
 
@@ -649,8 +656,8 @@ if(c.empty()){
 判断屏幕上是否存在控件符合选择器所确定的条件。例如要判断某个文本出现就执行某个动作，可以用：
 
 ```js
-if(text("某个文本").exists()){
-    //要支持的动作
+if (text("某个文本").exists()) {
+  //要支持的动作
 }
 ```
 
@@ -673,8 +680,8 @@ textContains("哈哈哈").waitFor();
 例如，要找出屏幕上所有文本长度为 10 的文本控件的代码为：
 
 ```js
-var uc = className("TextView").filter(function(w){
-    return w.text().length == 10;
+var uc = className("TextView").filter(function (w) {
+  return w.text().length == 10;
 });
 ```
 
@@ -722,10 +729,10 @@ var et = className("EditText").findOne();
 //选中前两个字
 et.setSelection(0, 2);
 //对选中内容进行复制
-if(et.copy()){
-    toast("复制成功");
-}else{
-    toast("复制失败");
+if (et.copy()) {
+  toast("复制成功");
+} else {
+  toast("复制失败");
 }
 ```
 
@@ -811,6 +818,7 @@ et.paste();
 对集合中所有控件执行向左滑的操作，并返回是否全部操作成功。
 
 ## UiObject.scrollRight()
+对集合中所有控件执行向右滑的操作，并返回是否全部操作成功。
 
 ## children()
 
@@ -819,10 +827,12 @@ et.paste();
 返回该控件的所有子控件组成的控件集合。可以用于遍历一个控件的子控件，例如：
 
 ```js
-className("AbsListView").findOne().children()
-    .forEach(function(child){
-        log(child.className());
-    });
+className("AbsListView")
+  .findOne()
+  .children()
+  .forEach(function (child) {
+    log(child.className());
+  });
 ```
 
 ## childCount()
@@ -833,7 +843,7 @@ className("AbsListView").findOne().children()
 
 ## child(i)
 
-- i {number} 子控件索引
+- `i` {number} 子控件索引
 - 返回 {UiObject}
 
 返回第 i+1 个子控件。如果 i>=控件数目或者小于 0，则抛出异常。
@@ -844,9 +854,9 @@ className("AbsListView").findOne().children()
 
 ```js
 var list = className("AbsListView").findOne();
-for(var i = 0; i < list.childCount(); i++){
-    var child = list.child(i);
-    log(child.className());
+for (var i = 0; i < list.childCount(); i++) {
+  var child = list.child(i);
+  log(child.className());
 }
 ```
 
@@ -858,9 +868,9 @@ for(var i = 0; i < list.childCount(); i++){
 
 ## bounds()
 
-- 返回 [Rect](https://hyb1996.github.io/AutoJs-Docs/widgets-based-automation.html#rect)
+- 返回 [Rect](#rect)
 
-返回控件在屏幕上的范围，其值是一个[Rect](https://hyb1996.github.io/AutoJs-Docs/widgets-based-automation.html#rect)对象。
+返回控件在屏幕上的范围，其值是一个[Rect](#rect)对象。
 
 示例：
 
@@ -879,9 +889,9 @@ click(b.centerX(), b.centerY());
 
 ## boundsInParent()
 
-- 返回 [Rect](https://hyb1996.github.io/AutoJs-Docs/widgets-based-automation.html#rect)
+- 返回 [Rect](#rect)
 
-返回控件在父控件中的范围，其值是一个[Rect](https://hyb1996.github.io/AutoJs-Docs/widgets-based-automation.html#rect)对象。
+返回控件在父控件中的范围，其值是一个[Rect](#rect)对象。
 
 ## drawingOrder()
 
@@ -923,20 +933,20 @@ click(b.centerX(), b.centerY());
 //找出动态列表
 var list = id("recycler_view").findOne();
 //遍历动态
-list.children().forEach(function(child){
-    //找出点赞图标
-    var like = child.findOne(id("feed_action_view_like"));
-    //找出点赞数量
-    var likeCount = child.findOne(id("text_view"));
-    //如果这两个控件没有找到就不继续了
-    if(like == null || likeCount == null){
-        return;
-    }
-    //判断点赞数量是否小于10
-    if(parseInt(likeCount.text()) < 10){
-        //点赞
-        like.click();
-    }
+list.children().forEach(function (child) {
+  //找出点赞图标
+  var like = child.findOne(id("feed_action_view_like"));
+  //找出点赞数量
+  var likeCount = child.findOne(id("text_view"));
+  //如果这两个控件没有找到就不继续了
+  if (like == null || likeCount == null) {
+    return;
+  }
+  //判断点赞数量是否小于10
+  if (parseInt(likeCount.text()) < 10) {
+    //点赞
+    like.click();
+  }
 });
 ```
 
@@ -957,11 +967,13 @@ UiCollection"继承"于数组，实际上是一个 UiObject 的数组，因此�
 
 ```js
 console.show();
-className("TextView").find().forEach(function(tv){
-    if(tv.text() != ""){
-        log(tv.text());
+className("TextView")
+  .find()
+  .forEach(function (tv) {
+    if (tv.text() != "") {
+      log(tv.text());
     }
-});
+  });
 ```
 
 也可以使用传统的数组遍历方式：
@@ -969,11 +981,11 @@ className("TextView").find().forEach(function(tv){
 ```js
 console.show();
 var uc = className("TextView").find();
-for(var i = 0; i < uc.length; i++){
-    var tv = uc[i];
-    if(tv.text() != ""){
-        log(tv.text());
-    }
+for (var i = 0; i < uc.length; i++) {
+  var tv = uc[i];
+  if (tv.text() != "") {
+    log(tv.text());
+  }
 }
 ```
 
@@ -1096,13 +1108,13 @@ var clickableNames = names.find(clickable());
 
 ## Rect.contains(r)
 
-- r [Rect](#rect)
+- `r` [Rect](#rect)
 
 返回是否包含另一个长方形 r。包含指的是，长方形 r 在该长方形的里面(包含边界重叠的情况)。
 
 ## Rect.intersect(r)
 
-- r [Rect](#rect)
+- `r` [Rect](#rect)
 
 返回是否和另一个长方形相交。
 
