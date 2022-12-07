@@ -10,8 +10,8 @@ sensors 模块提供了获取手机上的传感器的信息的支持，这些传
 
 ```js
 //光线传感器监听
-sensors.register("light").on("change", (event, light)=>{
-    log("当前光强度为", light);
+sensors.register("light").on("change", (event, light) => {
+  log("当前光强度为", light);
 });
 ```
 
@@ -104,13 +104,13 @@ sensors.register("light").on("change", (event, light)=>{
 console.show();
 //注册传感器监听
 var sensor = sensors.register("gravity");
-if(sensor == null){
-    toast("不支持重力传感器");
-    exit();
+if (sensor == null) {
+  toast("不支持重力传感器");
+  exit();
 }
 //监听数据
-sensor.on("change", (gx, gy, gz)=>{
-    log("重力加速度: %d, %d, %d", gx, gy, gz);
+sensor.on("change", (gx, gy, gz) => {
+  log("重力加速度: %d, %d, %d", gx, gy, gz);
 });
 ```
 
@@ -127,8 +127,8 @@ var sensor = sensors.register("gravity", sensors.delay.game);
 ```js
 sensors.ignoresUnsupportedSensor = true;
 //无需null判断
-sensors.register("gravity").on("change", (gx, gy, gz)=>{
-    log("重力加速度: %d, %d, %d", gx, gy, gz);
+sensors.register("gravity").on("change", (gx, gy, gz) => {
+  log("重力加速度: %d, %d, %d", gx, gy, gz);
 });
 ```
 
@@ -143,12 +143,12 @@ sensors.register("gravity").on("change", (gx, gy, gz)=>{
 ```js
 //注册一个传感器监听器
 var sensor = sensors.register("gravity");
-if(sensor == null){
-    exit();
+if (sensor == null) {
+  exit();
 }
 //2秒后注销该监听器
-setTimeout(()=> {
-    sensors.unregister(sensor);
+setTimeout(() => {
+  sensors.unregister(sensor);
 }, 2000);
 ```
 
@@ -166,8 +166,8 @@ setTimeout(()=> {
 //忽略不支持的传感器
 sensors.ignoresUnsupportedSensor = true;
 //监听有不支持的传感器时的事件
-sensors.on("unsupported_sensor", function(sensorName){
-    toastLog("不支持的传感器: " + sensorName);
+sensors.on("unsupported_sensor", function (sensorName) {
+  toastLog("不支持的传感器: " + sensorName);
 });
 //随便注册一个不存在的传感器。
 log(sensors.register("aaabbb"));
