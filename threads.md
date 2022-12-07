@@ -9,7 +9,9 @@ Threads 模块提供了多线程支持，可以启动新线程来运行脚本。
 通过`threads.start()`启动的所有线程会在脚本被强制停止时自动停止。
 
 由于 JavaScript 自身没有多线程的支持，因此您可能会遇到意料之外的问题。
+
 # threads
+
 ## threads.start(action)
 
 - `action` {Function} 要在新线程执行的函数
@@ -20,24 +22,24 @@ Threads 模块提供了多线程支持，可以启动新线程来运行脚本。
 例如:
 
 ```js
-threads.start(function(){
-    //在新线程执行的代码
-    while(true){
-        log("子线程");
-    }
+threads.start(function () {
+  //在新线程执行的代码
+  while (true) {
+    log("子线程");
+  }
 });
-while(true){
-    log("脚本主线程");
+while (true) {
+  log("脚本主线程");
 }
 ```
 
 通过该函数返回的[Thread](#thread)对象可以获取该线程的状态，控制该线程的运行中。例如:
 
 ```js
-var thread = threads.start(function(){
-    while(true){
-        log("子线程");
-    }
+var thread = threads.start(function () {
+  while (true) {
+    log("子线程");
+  }
 });
 //停止线程执行
 thread.interrupt();
@@ -81,11 +83,11 @@ thread.interrupt();
 Thread 对象提供了和 timers 模块一样的 API，例如`setTimeout()`, `setInterval()`等，用于在该线程执行相应的定时回调，从而使线程之间可以直接交互。例如：
 
 ```js
-var thread = threads.start(function(){
-    //在子线程执行的定时器
-    setInterval(function(){
-        log("子线程:" + threads.currentThread());
-    }, 1000);
+var thread = threads.start(function () {
+  //在子线程执行的定时器
+  setInterval(function () {
+    log("子线程:" + threads.currentThread());
+  }, 1000);
 });
 
 log("当前线程为主线程:" + threads.currentThread());
@@ -93,9 +95,9 @@ log("当前线程为主线程:" + threads.currentThread());
 //等待子线程启动
 thread.waitFor();
 //在子线程执行的定时器
-thread.setTimeout(function(){
-    //这段代码会在子线程执行
-    log("当前线程为子线程:" + threads.currentThread());
+thread.setTimeout(function () {
+  //这段代码会在子线程执行
+  log("当前线程为子线程:" + threads.currentThread());
 }, 2000);
 
 sleep(30 * 1000);
@@ -117,10 +119,10 @@ thread.interrupt();
 ```js
 var sum = 0;
 //启动子线程计算1加到10000
-var thread = threads.start(function(){
-    for(var i = 0; i < 10000; i++){
-        sum += i;
-    }
+var thread = threads.start(function () {
+  for (var i = 0; i < 10000; i++) {
+    sum += i;
+  }
 });
 //等待该线程完成
 thread.join();
@@ -138,12 +140,12 @@ toast("sum = " + sum);
 等待线程开始执行。调用`threads.start()`以后线程仍然需要一定时间才能开始执行，因此调用此函数会等待线程开始执行；如果线程已经处于执行状态则立即返回。
 
 ```js
-var thread = threads.start(function(){
-    //do something
+var thread = threads.start(function () {
+  //do something
 });
 thread.waitFor();
-thread.setTimeout(function(){
-    //do something
+thread.setTimeout(function () {
+  //do something
 }, 1000);
 ```
 
@@ -156,15 +158,15 @@ thread.setTimeout(function(){
 ```js
 log("当前线程(主线程):" + threads.currentThread());
 
-var thread = threads.start(function(){
-    //设置一个空的定时来保持线程的运行状态
-    setInterval(function(){}, 1000);
+var thread = threads.start(function () {
+  //设置一个空的定时来保持线程的运行状态
+  setInterval(function () {}, 1000);
 });
 
 sleep(1000);
-thread.setTimeout(function(){
-    log("当前线程(子线程):" + threads.currentThread());
-    exit();
+thread.setTimeout(function () {
+  log("当前线程(子线程):" + threads.currentThread());
+  exit();
 }, 1000);
 ```
 
@@ -216,13 +218,13 @@ Rhino 和 Auto.js 提供了一些简单的设施来解决简单的线程安全�
 
 ```js
 var i = 0;
-threads.start(function(){
-    while(true){
-        log(i++);
-    }
-});
-while(true){
+threads.start(function () {
+  while (true) {
     log(i++);
+  }
+});
+while (true) {
+  log(i++);
 }
 ```
 
@@ -233,13 +235,13 @@ while(true){
 ```js
 //atomic返回的对象保证了自增的原子性
 var i = threads.atomic();
-threads.start(function(){
-    while(true){
-        log(i.getAndIncrement());
-    }
-});
-while(true){
+threads.start(function () {
+  while (true) {
     log(i.getAndIncrement());
+  }
+});
+while (true) {
+  log(i.getAndIncrement());
 }
 ```
 
@@ -249,17 +251,17 @@ while(true){
 //锁保证了操作的原子性
 var lock = threads.lock();
 var i = 0;
-threads.start(function(){
-    while(true){
-        lock.lock();
-        log(i++);
-        lock.unlock();
-    }
-});
-while(true){
+threads.start(function () {
+  while (true) {
     lock.lock();
     log(i++);
     lock.unlock();
+  }
+});
+while (true) {
+  lock.lock();
+  log(i++);
+  lock.unlock();
 }
 ```
 
@@ -268,16 +270,16 @@ while(true){
 ```js
 //sync函数会把里面的函数加上同步锁，使得在同一时刻最多只能有一个线程执行这个函数
 var i = 0;
-var getAndIncrement = sync(function(){
-    return i++;
+var getAndIncrement = sync(function () {
+  return i++;
 });
-threads.start(function(){
-    while(true){
-        log(getAndIncrement());
-    }
-});
-while(true){
+threads.start(function () {
+  while (true) {
     log(getAndIncrement());
+  }
+});
+while (true) {
+  log(getAndIncrement());
 }
 ```
 
@@ -296,20 +298,20 @@ toast("第一个元素为" + nums.get(0));
 ```js
 var nums = [];
 var numsLock = threads.lock();
-threads.start(function(){
-    //向数组添加元素123
-    numsLock.lock();
-    nums.push(123);
-    log("线程: %s, 数组: %s", threads.currentThread(), nums);
-    numsLock.unlock();
+threads.start(function () {
+  //向数组添加元素123
+  numsLock.lock();
+  nums.push(123);
+  log("线程: %s, 数组: %s", threads.currentThread(), nums);
+  numsLock.unlock();
 });
 
-threads.start(function(){
-    //向数组添加元素456
-    numsLock.lock();
-    nums.push(456);
-    log("线程: %s, 数组: %s", threads.currentThread(), nums);
-    numsLock.unlock();
+threads.start(function () {
+  //向数组添加元素456
+  numsLock.lock();
+  nums.push(456);
+  log("线程: %s, 数组: %s", threads.currentThread(), nums);
+  numsLock.unlock();
 });
 
 //删除数组最后一个元素
@@ -328,8 +330,8 @@ numsLock.unlock();
 
 ```js
 var i = 0;
-function add(x){
-    i += x;
+function add(x) {
+  i += x;
 }
 
 var syncAdd = sync(add);
@@ -346,14 +348,14 @@ Auto.js 提供了一些简单的设施来支持简单的线程通信。`threads.
 ```js
 var sum = threads.disposable();
 //启动子线程计算
-threads.start(function(){
-    var s = 0;
-    //从1加到10000
-    for(var i = 1; i <= 10000; i++){
-        s += i;
-    }
-    //通知主线程接收结果
-    sum.setAndNotify(s);
+threads.start(function () {
+  var s = 0;
+  //从1加到10000
+  for (var i = 1; i <= 10000; i++) {
+    s += i;
+  }
+  //通知主线程接收结果
+  sum.setAndNotify(s);
 });
 //blockedGet()用于等待结果
 toast("sum = " + sum.blockedGet());
@@ -367,15 +369,15 @@ var lock = threads.lock();
 //新建一个条件，即"计算完成"
 var complete = lock.newCondition();
 var sum = 0;
-threads.start(function(){
-    //从1加到10000
-    for(var i = 1; i <= 10000; i++){
-        sum += i;
-    }
-    //通知主线程接收结果
-    lock.lock();
-    complete.signal();
-    lock.unlock();
+threads.start(function () {
+  //从1加到10000
+  for (var i = 1; i <= 10000; i++) {
+    sum += i;
+  }
+  //通知主线程接收结果
+  lock.lock();
+  complete.signal();
+  lock.unlock();
 });
 //等待计算完成
 lock.lock();
@@ -390,17 +392,17 @@ toast("sum = " + sum);
 ```js
 //新建一个emitter, 并指定回调执行的线程为当前线程
 var sum = events.emitter(threads.currentThread());
-threads.start(function(){
-    var s = 0;
-    //从1加到10000
-    for(var i = 1; i <= 10000; i++){
-        s += i;
-    }
-    //发送事件result通知主线程接收结果
-    sum.emit('result', s);
+threads.start(function () {
+  var s = 0;
+  //从1加到10000
+  for (var i = 1; i <= 10000; i++) {
+    s += i;
+  }
+  //发送事件result通知主线程接收结果
+  sum.emit("result", s);
 });
-sum.on('result', function(s){
-    toastLog("sum = " + s + ", 当前线程: " + threads.currentThread());
+sum.on("result", function (s) {
+  toastLog("sum = " + s + ", 当前线程: " + threads.currentThread());
 });
 ```
 
