@@ -1,4 +1,4 @@
-# OCR文档
+# OCR 文档
 
 !>稳定性: 实验
 
@@ -18,48 +18,50 @@
 ```js
 // files.path() 将相对路径转为绝对路径
 let myModelPath = files.path("./models");
-let result = paddle.ocr(img, myModelPath)
+let result = paddle.ocr(img, myModelPath);
 ```
 
 ### paddle.ocr(img[, cpuThreadNum=4, useSlim=true])
 
-- ` img ` {Image} 图片
-- ` cpuThreadNum ` {Number} 识别使用的 CPU 核心数量
-- ` useSlim ` {Boolean} 加载的模型,可选值:
+- `img` {Image} 图片
+- `cpuThreadNum` {Number} 识别使用的 CPU 核心数量
+- `useSlim` {Boolean} 加载的模型,可选值:
   - `true` ocr_v2_for_cpu(slim) :快速模型,默认
   - `false` ocr_v2_for_cpu : 精准模型
-- `return` {Array}  
+- `return` {Array}
 
 高精度识别，返回值包含坐标，置信度
 
 ```js
 let res = paddle.ocr(img);
-toastLog(JSON.stringify(res))
+toastLog(JSON.stringify(res));
 ```
 
-返回值示例
+返回值示例:
 
 ```json
-[{
- "bounds": {
-  "bottom": 535,
-  "left": 348,
-  "right": 631,
-  "top": 384
- },
- "confidence": 0.9808736,
- "inferenceTime": 188.0,
- "preprocessTime": 53.0,
- "text": "约定",
- "words": "约定"
-}]
+[
+  {
+    "bounds": {
+      "bottom": 535,
+      "left": 348,
+      "right": 631,
+      "top": 384
+    },
+    "confidence": 0.9808736,
+    "inferenceTime": 188.0,
+    "preprocessTime": 53.0,
+    "text": "约定",
+    "words": "约定"
+  }
+]
 ```
 
 ### paddle.ocrText(img[, cpuThreadNum=4, useSlim=true])
 
-- ` img ` {Image} 图片
-- ` cpuThreadNum ` {Number} 识别使用的 CPU 核心数量
-- ` useSlim ` {Boolean} 加载的模型,可选值:
+- `img` {Image} 图片
+- `cpuThreadNum` {Number} 识别使用的 CPU 核心数量
+- `useSlim` {Boolean} 加载的模型,可选值:
   - `true` ocr_v2_for_cpu(slim) :快速模型,默认
   - `false` ocr_v2_for_cpu : 精准模型
 - `return` {Array} 字符串数组
@@ -68,13 +70,13 @@ toastLog(JSON.stringify(res))
 
 ```js
 let res = paddle.ocrText(img);
-toastLog("识别信息: " + JSON.stringify(res))
+toastLog("识别信息: " + JSON.stringify(res));
 //["约定","最终相遇"]
 ```
 
 ## Tessract OCR
 
-[**6.2.9 新增**]
+[**6.2.9 新增**]  
 前往 github 下载完整例子：[TessractOCR](https://github.com/wilinz/autoxjs-tessocr)
 
 ## ML kit OCR
@@ -96,5 +98,5 @@ toastLog("识别信息: " + JSON.stringify(res))
 ```js
 //识别中文
 let result = gmlkit.ocr(img, "zh");
-log(result.text)
+log(result.text);
 ```
