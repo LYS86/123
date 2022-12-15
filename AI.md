@@ -93,10 +93,54 @@ toastLog("识别信息: " + JSON.stringify(res));
   - `ja` 日语
   - `ko` 韩语
   - [更多语言](https://developers.google.cn/ml-kit/vision/text-recognition/v2/languages)
-- `retrun` {Object} Json
+- `retrun` {Object} [MlKitOcrResult](#MlKitOcrResult)
 
 ```js
 //识别中文
 let result = gmlkit.ocr(img, "zh");
 log(result.text);
 ```
+### MlKitOcrResult
+
+#### MlKitOcrResult.find(predicate)
+- 'predicate' {Function}
+- 'return' {Object}
+返回通过函数测试的第一个值，没有则返回null
+
+#### MlKitOcrResult.find(level,predicate)
+- 'level' {Number} 层级
+- 'predicate' {Function}
+- 'return' {Object}
+
+
+返回指定层级中通过函数测试的第一个值，没有则返回null
+
+#### MlKitOcrResult.filter(predicate)
+- 'level' {Number} 层级
+- 'return' {Object}
+
+返回所有通过函数测试的值，没有则返回空对象
+
+#### MlKitOcrResult.filter(level,predicate)
+- 'level' {Number} 层级
+- 'predicate' {Function}
+- 'return' {Object}
+
+返回指定层级中所有通过函数测试的值,没有则返回空对象
+
+#### MlKitOcrResult.toArray()
+- 'return' {Array}
+
+将结果转换成数组
+
+#### MlKitOcrResult.toArray(level)
+- 'level' {Number} 层级
+- 'return' {Array}
+将指定层级结果转换成数组
+
+#### MlKitOcrResult.sort()
+对结果本身进行排序,没有返回值
+
+#### MlKitOcrResult.sorted()
+- 'return' {Object}
+对结果排序,返回个新对象
