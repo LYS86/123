@@ -102,6 +102,8 @@ log(result.text);
 ```
 ### MlKitOcrResult
 
+gmlkit.ocr返回结果
+
 #### MlKitOcrResult.find(predicate)
 - `predicate` {Function}
 - `return` {Object}
@@ -144,4 +146,5 @@ log(result.text);
 
 #### MlKitOcrResult.sorted()
 - `return` {Object}
+
 对结果排序,返回个新对象
