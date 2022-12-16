@@ -105,13 +105,13 @@ log(result.text);
 #### MlKitOcrResult.find(predicate)
 - `predicate` {Function}
 - `return` {Object}
+
 返回通过函数测试的第一个值，没有则返回null
 
 #### MlKitOcrResult.find(level,predicate)
 - `level` {Number} 层级
 - `predicate` {Function}
 - `return` {Object}
-
 
 返回指定层级中通过函数测试的第一个值，没有则返回null
 
@@ -136,6 +136,7 @@ log(result.text);
 #### MlKitOcrResult.toArray(level)
 - `level` {Number} 层级
 - `return` {Array}
+
 将指定层级结果转换成数组
 
 #### MlKitOcrResult.sort()
