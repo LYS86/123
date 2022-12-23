@@ -169,8 +169,9 @@
 
 ## Text(text)
 
-- `text` {string} 要输入的文字，只能为英文或英文符号  
-  输入文字 text。例如`Text("aaa");`
+- `text` {string} 要输入的文字，只能为英文或英文符号
+
+输入文字 text。例如`Text("aaa");`
 
 ## KeyCode(code)
 
