@@ -450,7 +450,7 @@ idMatches("[a-zA-Z]+");
 
 有关正则表达式，可以查看[正则表达式 - 菜鸟教程](http://www.runoob.com/Stringp/Stringp-example.html)。
 
-## UiSelector.bounds(left, top, right, buttom)
+## UiSelector.bounds(left, top, right, bottom)
 
 - `left` {number} 控件左边缘与屏幕左边的距离
 - `top` {number} 控件上边缘与屏幕上边的距离
@@ -463,14 +463,14 @@ idMatches("[a-zA-Z]+");
 
 可以看到 bounds 属性为(951, 67, 1080, 196)，此时使用代码`bounds(951, 67, 1080, 196).clickable().click()`即可点击该控件。
 
-## UiSelector.boundsInside(left, top, right, buttom)
+## UiSelector.boundsInside(left, top, right, bottom)
 
 - `left` {number} 范围左边缘与屏幕左边的距离
 - `top` {number} 范围上边缘与屏幕上边的距离
 - `right` {number} 范围右边缘与屏幕左边的距离
 - `bottom` {number} 范围下边缘与屏幕上边的距离
 
-为当前选择器附加控件"bounds 需要在 left, top, right, buttom 构成的范围里面"的条件。
+为当前选择器附加控件"bounds 需要在 left, top, right, bottom 构成的范围里面"的条件。
 
 这个条件用于限制选择器在某一个区域选择控件。例如要在屏幕上半部分寻找文本控件 TextView，代码为:
 
@@ -483,14 +483,14 @@ log(w.text());
 
 其中我们使用了`device.width`来获取屏幕宽度，`device.height`来获取屏幕高度。
 
-## UiSelector.boundsContains(left, top, right, buttom)
+## UiSelector.boundsContains(left, top, right, bottom)
 
 - `left` {number} 范围左边缘与屏幕左边的距离
 - `top` {number} 范围上边缘与屏幕上边的距离
 - `right` {number} 范围右边缘与屏幕左边的距离
 - `bottom` {number} 范围下边缘与屏幕上边的距离
 
-为当前选择器附加控件"bounds 需要包含 left, top, right, buttom 构成的范围"的条件。
+为当前选择器附加控件"bounds 需要包含 left, top, right, bottom 构成的范围"的条件。
 
 这个条件用于限制控件的范围必须包含所给定的范围。例如给定一个点(500, 300), 寻找在这个点上的可点击控件的代码为:
 
@@ -818,6 +818,7 @@ et.paste();
 对集合中所有控件执行向左滑的操作，并返回是否全部操作成功。
 
 ## UiObject.scrollRight()
+
 对集合中所有控件执行向右滑的操作，并返回是否全部操作成功。
 
 ## children()
