@@ -16,4 +16,4 @@
 
 - 或安装 vscode 插件
 - 插件名称: docsify-Preview
-- 链接: [docsify-Preview] (https://marketplace.visualstudio.com/items?itemName=dzylikecode.docsify-preview)
+- 链接: [docsify-Preview](https://marketplace.visualstudio.com/items?itemName=dzylikecode.docsify-preview)
