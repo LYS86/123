@@ -12,3 +12,7 @@
 - 安装 `npm i docsify-cli -g`
 - 运行 `docsify serve .` (后面有个 点)
 - 浏览器访问 `http://localhost:3000`
+
+- 或安装 vscode 插件
+  插件名称: docsify-Preview
+  链接: [docsify-Preview] (https://marketplace.visualstudio.com/items?itemName=dzylikecode.docsify-preview)
