@@ -1,6 +1,6 @@
 # ML kit OCR
 
->  Google ML Kit OCR 在6.3.4版本加入
+> Google ML Kit OCR 在 6.3.4 版本加入
 
 ## gmlkit.ocr(img, language)
 
@@ -32,7 +32,8 @@ console.log(result.text);
   - `zh` 中文
   - `sa` 梵文
   - `ja` 日语
-  - `ko` 韩语 -其他语言
+  - `ko` 韩语
+  - 其他语言
 - `retrun` {String} 识别到的文本字符串。
 
 ```js
@@ -104,4 +105,3 @@ console.log(result);
 同上,返回排序后的 Result 对象
 
 - `return` {Result}
-
